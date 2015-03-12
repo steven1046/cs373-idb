@@ -121,11 +121,15 @@ def insertGames(gameList, cursor) :
 		
 
 
-def insertPlatforms() :
-	pass
+def insertPlatforms(platformList, cursor) :
+	for val in platformList :
+		queryString = "insert into app.platforms (game_id, platform) values (%s, %s)"
+		cursor.execute(queryString, (val[0], val[1]))
 
-def insertGenres() :
-	pass
+def insertGenres(genreList, cursor) :
+	for val in genreList :
+		queryString = "insert into app.genres (game_id, genre) values (%s, %s)"
+		cursor.execute(queryString, (val[0], val[1]))
 
 
 def main() :
@@ -151,7 +155,10 @@ def main() :
 
 	"""
 
-	insertGames(gameList, cursor)
+	# insertGames(gameList, cursor)
+	insertGenres(genreList, cursor)
+	insertPlatforms(platformList, cursor)
+
 	conn.commit()
 
 	# print(h)
