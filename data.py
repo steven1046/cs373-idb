@@ -53,6 +53,40 @@ def getGamesInfo(gamesDict, apiKey) :
 
 	return games
 
+def normalize(games) :
+	# need to pull out platforms and genres list and put into new dicts
+
+	platforms = {}
+	genres = {}
+	platformsId = 0
+	genresId = 0
+
+	# normalizing
+	for game in h :
+		for field in h[game] :
+			# replacing image dict with string for super_url image
+			if field == "image" :
+				h[game][field] = h[game][field]["super_url"]
+			# replace the platforms dict with platformsId
+			elif field == "platforms" :
+				platforms[game] = h[game][field]
+				del h[game][field]
+				field = "platformsId"
+				h[game]["platformsId"] = platformsId
+				platformsId += 1
+			# replace the genres dict with a genresId
+			elif field == "genres" :
+				genres[game] = h[game][field]
+				del h[game][field]
+				field = "genresId"
+				h[game]["genresId"] = genresId
+				genresId += 1
+
+
+			print(str(type(h[game][field])) + field)
+		print()
+
+
 def main() :
 	apiKey = "1d2e0eab2472ceddda3ec2428d5f8c3e52a68045"
 	g = getCompanyGames("single_id.txt", apiKey)
