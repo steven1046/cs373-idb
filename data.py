@@ -1,4 +1,4 @@
-import fileinput, requests, json
+import fileinput, requests, json, psycopg2
 
 # returns a dictionary with company (name, id) as keys and a list of game ids as values
 def getCompanyGames(strFile, apiKey) :
@@ -82,7 +82,7 @@ def normalize(games) :
 					platformList += [(game[1], platform["name"])]
 
 				# field = "platformsId"
-				# games[game]["platformsId"] = platformsId
+				games[game]["platforms"] = platformsId
 				platformsId += 1
 			# replace the genres dict with a genresId
 			elif field == "genres" :
@@ -93,21 +93,14 @@ def normalize(games) :
 					genreList += [(game[1], genre["name"])]
 
 				# field = "genresId"
-				# games[game]["genresId"] = genresId
+				games[game]["genres"] = genresId
 				genresId += 1
 			else :
 				print(str(type(games[game][field])) + field)
 
 		# populate gamesList. 
-		g = [games[game]["id"]]
-		keys = list(games[game].keys())
-		keys.sort()
-
-		for k in keys :
-			if k != "id" :
-				g += [games[game][k]]
-
-
+		t = games[game]
+		g = [t["id"], t["name"], t["image"], t["original_release_date"], t["deck"], t["description"]]
 		gameList += [g]
 
 		# Reduce size of game in dictionary??? Can't delete from dict while iterating so I will set to some small variable. Not sure if this is needed.
@@ -116,11 +109,37 @@ def normalize(games) :
 
 	return platformList, genreList, gameList
 
+def insertGames(gameList, cursor) :
+	for game in gameList :
+		print(len(game))
+		queryString = "insert into app.games (game_id, name, image, original_release_date, deck, description) values (" \
+						"%s, %s, %s, %s, %s, %s)"
+		cursor.execute(queryString, (game[0], game[1], game[2], game[3], game[4], game[5]))
+		for val in game :
+			print(type(val))
+		
+		
+
+
+def insertPlatforms() :
+	pass
+
+def insertGenres() :
+	pass
+
 
 def main() :
 	apiKey = "1d2e0eab2472ceddda3ec2428d5f8c3e52a68045"
 	g = getCompanyGames("single_id.txt", apiKey)
 	h = getGamesInfo(g, apiKey)
+
+	conn_string = "host='localhost' dbname='postgres' user='dataUser' password='password!'"
+	conn = psycopg2.connect(conn_string)
+	cursor = conn.cursor()
+	cursor.execute("select * from app.platforms;")
+	print(cursor.fetchone())
+
+	
 	
 	platformList, genreList, gameList = normalize(h)
 
@@ -132,14 +151,17 @@ def main() :
 
 	"""
 
+	insertGames(gameList, cursor)
+	conn.commit()
+
 	# print(h)
 	print(platformList)
 	print(genreList)
 	print(gameList)
 
 
-main()
-
+if __name__ == "__main__":
+	main()
 
 
 
