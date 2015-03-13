@@ -99,22 +99,22 @@ def normalize(games) :
 				print(str(type(games[game][field])) + field)
 
 		# populate gamesList. 
-		t = games[game]
-		g = [t["id"], t["name"], t["image"], t["original_release_date"], t["deck"], t["description"]]
-		gameList += [g]
+		# t = games[game]
+		# g = [t["id"], t["name"], t["image"], t["original_release_date"], t["deck"], t["description"]]
+		# gameList += [g]
 
 		# Reduce size of game in dictionary??? Can't delete from dict while iterating so I will set to some small variable. Not sure if this is needed.
-		games[game] = {}
+		# games[game] = {}
 
 
-	return platformList, genreList, gameList
+	return platformList, genreList, games
 
-def insertGames(gameList, cursor) :
-	for game in gameList :
-		print(len(game))
+def insertGames(games, cursor) :
+	for game in games :
+		g = games[game]
 		queryString = "insert into app.games (game_id, name, image, original_release_date, deck, description) values (" \
 						"%s, %s, %s, %s, %s, %s)"
-		cursor.execute(queryString, (game[0], game[1], game[2], game[3], game[4], game[5]))
+		cursor.execute(queryString, (g["id"], g["name"], g["image"], g["original_release_date"], g["deck"], g["description"]))
 		for val in game :
 			print(type(val))
 		
@@ -140,12 +140,10 @@ def main() :
 	conn_string = "host='localhost' dbname='postgres' user='dataUser' password='password!'"
 	conn = psycopg2.connect(conn_string)
 	cursor = conn.cursor()
-	cursor.execute("select * from app.platforms;")
-	print(cursor.fetchone())
 
 	
 	
-	platformList, genreList, gameList = normalize(h)
+	platformList, genreList, gamesDict = normalize(h)
 
 	# each return value from normalize will be its own table. 
 
@@ -155,16 +153,21 @@ def main() :
 
 	"""
 
-	# insertGames(gameList, cursor)
-	insertGenres(genreList, cursor)
-	insertPlatforms(platformList, cursor)
+	insertGames(gamesDict, cursor)
+	# insertGenres(genreList, cursor)
+	# insertPlatforms(platformList, cursor)
+	# for game in gamesDict :
+	# 	print(gamesDict[game].keys())
+
+	cursor.execute("select image from app.games")
+	print(cursor.fetchall())
 
 	conn.commit()
 
 	# print(h)
-	print(platformList)
-	print(genreList)
-	print(gameList)
+	# print(platformList)
+	# print(genreList)
+	# print(gamesDict)
 
 
 if __name__ == "__main__":
