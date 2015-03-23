@@ -181,7 +181,7 @@ def insert_platforms(platform_list, cursor) :
 def main() :
 
 	apiKey = "1d2e0eab2472ceddda3ec2428d5f8c3e52a68045"
-	conn_string = "host='localhost' dbname='postgres' user='dataUser' password='password!'"
+	conn_string = "host='localhost' dbname='banana-fish' user='dataUser' password='password!'"
 	conn = psycopg2.connect(conn_string)
 	cursor = conn.cursor()
 	ids = load_company_ids("multiple_ids.txt", apiKey)

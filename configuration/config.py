@@ -4,8 +4,7 @@ config = {
     "DATABASE_HOST": "localhost",
     "DATABASE_PORT": "5432",
     "API_VER": "v1",
-    "DEBUG": True,
-    "SERVER_NAME": "banana-fish"
+    "DEBUG": True
 }
 
 

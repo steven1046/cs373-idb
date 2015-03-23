@@ -20,18 +20,18 @@ class Company(db.Model) :
     website = db.Column(db.String(80))
 
     def __init__(self, company_id, name, deck, description, image, address, city, state, country, phone, date_founded, website) :
-    	self.company_id = company_id
-    	self.name = name
-    	self.deck = deck
-    	self.description = description
-    	self.image = image
-    	self.address = address
-    	self.city = city
-    	self.state = state
-    	self.country = country
-    	self.phone = phone
-    	self.date_founded = date_founded
-    	self.website = website
+        self.company_id = company_id
+        self.name = name
+        self.deck = deck
+        self.description = description
+        self.image = image
+        self.address = address
+        self.city = city
+        self.state = state
+        self.country = country
+        self.phone = phone
+        self.date_founded = date_founded
+        self.website = website
 
     def __repr__(self) :
     	return ''
