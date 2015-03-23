@@ -12,5 +12,6 @@ def create():
         print(request.json)
         Game.create_game(request.json)
         return jsonify(200)
+
     except Exception as e:
         return jsonify(e)

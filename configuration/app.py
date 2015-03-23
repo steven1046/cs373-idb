@@ -3,7 +3,7 @@ from configuration.config import config
 
 app = Flask(__name__)
 
-app.config = config
+app.config.update(config)
 
 from api import game
-app.register_blueprint(game.games, url_prefix=app.config['ROUTE_PREFIX'] + "games")
+app.register_blueprint(game.games, url_prefix=config['ROUTE_PREFIX'] + "games")
