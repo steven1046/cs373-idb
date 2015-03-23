@@ -23,7 +23,11 @@ API calls related resources of the **Games API**
 ### Create a Game [POST]
 + Request (application/json)
 
-        { "title": "League of Legends" }
+        {
+          "game_id": 1, "name": "League of Legends", 
+           original_release_date: "10-27-2009", deck: "MOBA", description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
+           company_id: 1
+        }
 
 + Response 201 (application/json)
 
