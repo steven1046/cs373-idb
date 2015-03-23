@@ -4,9 +4,9 @@ FORMAT: 1A
 BananaFish is an API that allows people to find games, companies, and jobs in the gaming industry.
 
 # Group Game
-API calls related resources of the **Games API**
+API calls related to resources of the **Games API**
 
-## Games [/notes]
+## Games [/models/Game.py]
 ### Get a game [GET]
 + Response 200 (application/json)
 
@@ -33,22 +33,20 @@ API calls related resources of the **Games API**
 
         { "id": 3, "title": "League of Legends" }
 
-## Note [/games/{id}]
-A single Note object with all its details
-
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
-
-### Retrieve a Note [GET]
+## Company [/models/Company.py]
+### Retrieve a Company [GET]
 + Response 200 (application/json)
 
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
-
-### Remove a Note [DELETE]
-+ Response 204
+    [{
+        "company_id": 1, "name": Riot Games, "deck": Created LOL, "description": Creator of the popular MOBA League of Legends,
+        "image": image.jpg, "address": 2450 Broadway, Santa Monica, CA 90404,
+        "city": Santa Monica, "state": California, "country": USA, 
+        "phone": , "date_founded": 10-27-2009, "website": www.riotgames.com/
+    },
+    {
+        "company_id": 2, "name": Blizzard, "deck": Created WOW, "description": Creator of the popular MMO World of Warcraft,
+        "image": image2.jpg, "address": 16215 Alton Pkwy,
+        "city": Irving, "state": California, "country": USA, 
+        "phone": , "date_founded": 11-23-2004, "website": blizzard.com/
+    }]
+    
