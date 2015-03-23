@@ -1,7 +1,6 @@
 __author__ = 'alexanderventura'
 
 from configuration.database import db
-from models import JSONModel
 from utils.json_utils import to_json
 
 
