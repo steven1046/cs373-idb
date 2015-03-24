@@ -2,6 +2,7 @@ __author__ = 'alexanderventura'
 
 from configuration.database import db
 from utils.json_utils import to_json
+from models import Company
 
 
 class Game(db.Model):
@@ -14,7 +15,10 @@ class Game(db.Model):
     original_release_date = db.Column(db.DateTime)
     deck = db.Column(db.Text)
     description = db.Column(db.Text)
-    company_id = db.Column(db.Integer)
+    # company_id = db.Column(db.Integer)
+    company_id = db.Column(db.Integer, db.ForeignKey("app.companies.company_id"))
+
+
 
     def __init__(self, game_id, name, image, original_release_date, deck, description, company_id):
         self.game_id = game_id

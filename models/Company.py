@@ -20,6 +20,11 @@ class Company(db.Model) :
     date_founded = db.Column(db.DateTime)
     website = db.Column(db.String(80))
 
+    games = db.relationship("Game")
+
+
+
+
     def __init__(self, company_id, name, deck, description, image, address, city, state, country, phone, date_founded, website) :
         self.company_id = company_id
         self.name = name
@@ -48,6 +53,10 @@ def create_company(company) :
 @to_json
 def find_by_id(company_id):
     return Company.query.filter_by(company_id=company_id).first()
+
+# @to_json
+# def get_company_games(company_id):
+#     return Company.query.join(Game, Game.c.)
 
 
 
