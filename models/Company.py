@@ -1,12 +1,13 @@
 __author__ = 'alexanderventura'
 
 from configuration.database import db
-from sqlalchemy.dialects.postgresql import ARRAY
+from utils.json_utils import to_json
 
 class Company(db.Model) :
     __tablename__ = "companies"
+    __table_args__ = {"schema": "app"}
 
-    company_id = db.Column(db.Integer, primarykey=True)
+    company_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     deck = db.Column(db.Text)
     description = db.Column(db.Text)
@@ -42,6 +43,11 @@ def create_company(company) :
 						company["phone"], company["date_founded"], company["website"])
 	db.session.add(new_company)
 	db.session.commit()
+
+
+@to_json
+def find_by_id(company_id):
+    return Company.query.filter_by(company_id=company_id).first()
 
 
 
