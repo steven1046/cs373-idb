@@ -40,7 +40,13 @@ class Company(db.Model) :
         self.website = website
 
     def __repr__(self) :
-    	return ''
+        return str(self.to_dict())
+
+    def to_dict(self):
+        d = {}
+        for column in self.__table__.columns:
+            d[column.name] = str(getattr(self, column.name))
+        return d
 
 def create_company(company) :
 	new_company = Company(company["company_id"], company["name"], company["deck"], company["description"],

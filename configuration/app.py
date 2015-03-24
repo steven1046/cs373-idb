@@ -1,9 +1,12 @@
 from flask import Flask
-from configuration.config import config
+from configuration.config import config, test_config
 
 app = Flask(__name__)
 
 app.config.update(config)
+
+test_app = Flask(__name__)
+test_app.config.update(test_config)
 
 from api import game, company, genre, platform
 app.register_blueprint(game.games, url_prefix=config['ROUTE_PREFIX'] + "games")

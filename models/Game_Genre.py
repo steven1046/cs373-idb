@@ -18,6 +18,7 @@ class Game_Genre(db.Model):
         return ""
 
 
+
 # Todo. Add a connect game_id to genre_id function. Inserts into game_genres table
 
 #use to find the genre_id for the given game_id

@@ -34,7 +34,9 @@ class Game(db.Model):
         return dict_form
 
     def __repr__(self):
-        return ''
+        return str({k: self.k for k in self.__class__.__table__.columns})
+
+
 
 
 def create_game(game):

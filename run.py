@@ -6,3 +6,4 @@ if __name__ == '__main__':
     print('Routing Table')
     print(app.url_map)
     app.run(use_reloader=False)
+

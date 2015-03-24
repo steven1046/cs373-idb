@@ -11,3 +11,12 @@ config = {
 config["ROUTE_PREFIX"] = "/api/" + config["API_VER"] + "/"
 config['SQLALCHEMY_DATABASE_URI'] = "%s://%s:%s/%s" % (config["DATABASE_ADAPTER"], config["DATABASE_HOST"],
                                     config["DATABASE_PORT"], config["DATABASE_NAME"])
+
+
+test_config = {
+    "DATABASE_ADAPTER": "sqlite",
+    "DATABASE_NAME": "app.db",
+    "DEBUG": True
+}
+
+
