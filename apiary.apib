@@ -4,10 +4,13 @@ FORMAT: 1A
 **BananaFish** is an API that allows people to find games, companies, and jobs in the gaming industry.
 
 
+
+
+
 # Group Game
 API calls related to resources of the **Games API**
 
-## Games [/models/Game.py]
+## Games [/models/Game.py/{game_id}]
 Attributes belonging to a **game**
 + Game ID
 + Name
@@ -17,6 +20,9 @@ Attributes belonging to a **game**
 + Description
 + Company ID
 
++ Parameters
+    + game_id (required, number, `1`) ... ID of the Game in form of an integer
+    
 ### Lookup a Game [GET]
 + Response 200 (application/json)
 
@@ -57,16 +63,25 @@ Attributes belonging to a **game**
 
     + Header
     
+            Location: /models/Game.py/2
+    
     + Body
     
             {
                 "id": 3,
-                "title": "League of Legends"
+                "title": "League of Legends",
+                "original_release_date": "11-23-2004",
+                "deck": "MOBA",
+                "description": "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
+                "company_id": 1
             }
 
 
+
+
+
 # Group Company
-## Companies [/models/Company.py]
+## Companies [/models/Company.py/{company_id}]
 Attributes belonging to a **company**
 + Company ID
 + Name
@@ -81,6 +96,9 @@ Attributes belonging to a **company**
 + Date Founded
 + Website
 
++ Parameters
+    + company_id (required, number, `1`) ... ID of the Company in form of an integer
+    
 ### Lookup a Company [GET]
 + Response 200 (application/json)
 
@@ -115,6 +133,11 @@ Attributes belonging to a **company**
             }
         ]
 
+
+
+
+
 # Group Job
 ## Job
-### Lookup a Job
+### Lookup a Company [GET]
++ Response 200 (application/json)
