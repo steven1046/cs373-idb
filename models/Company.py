@@ -27,6 +27,7 @@ class Company(db.Model) :
 
     def __init__(self, company_id, name, deck, description, image, address, city, state, country, phone, date_founded,
                  website, test=False) :
+
         self.company_id = company_id
         self.name = name
         self.deck = deck
@@ -40,8 +41,22 @@ class Company(db.Model) :
         self.date_founded = date_founded
         self.website = website
 
-        if test:
-            Company.__table_args__ = None
+
+    # @staticmethod
+    # def to_test_schema():
+    #     Company.company_id = test_db.Column("company_id", test_db.Integer, primary_key=True)
+    #     Company.name = test_db.Column(test_db.String(80))
+    #     Company.deck = test_db.Column(test_db.Text)
+    #     Company.description = test_db.Column(test_db.Text)
+    #     Company.image = test_db.Column(test_db.String(80))
+    #     Company.address = test_db.Column(test_db.String(80))
+    #     Company.city = test_db.Column(test_db.String(50))
+    #     Company.state = test_db.Column(test_db.String(50))
+    #     Company.country = test_db.Column(test_db.String(50))
+    #     Company.phone = test_db.Column(test_db.String(20))
+    #     Company.date_founded = test_db.Column(test_db.DateTime)
+    #     Company.website = test_db.Column(test_db.String(80))
+
 
     def __repr__(self) :
         return str(self.to_dict())
