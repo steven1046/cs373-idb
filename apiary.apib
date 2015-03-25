@@ -27,7 +27,6 @@ Attributes belonging to a **game**
 + Response 200 (application/json)
 
         {
-            "url": "/models/Game.py/1",
             "game_id": 1,
             "name": "League of Legends",
             "image": "image.jpg",
@@ -57,7 +56,6 @@ Attributes belonging to a **game**
     + Body
     
             {
-                "url": "/models/Game.py/2",
                 "game_id": 2,
                 "name": "World of Warcraft",
                 "image": "image.jpg",
@@ -96,40 +94,6 @@ Attributes belonging to a **company**
 ### Lookup a Company [GET]
 + Response 200 (application/json)
 
-        [
-            {
-                "company_id": 1,
-                "name": Riot Games,
-                "deck": Created LOL,
-                "description": Creator of the popular MOBA League of Legends,
-                "image": image.jpg,
-                "address": 2450 Broadway, Santa Monica, CA 90404,
-                "city": Santa Monica,
-                "state": California,
-                "country": USA, 
-                "phone": ,
-                "date_founded": 10-27-2009,
-                "website": www.riotgames.com/
-            },
-            {
-                "company_id": 2,
-                "name": Blizzard,
-                "deck": Created WOW,
-                "description": Creator of the popular MMO World of Warcraft,
-                "image": image2.jpg,
-                "address": 16215 Alton Pkwy,
-                "city": Irving,
-                "state": California,
-                "country": USA, 
-                "phone": ,
-                "date_founded": 11-23-2004,
-                "website": www.blizzard.com/
-            }
-        ]
-
-### Add a Company [POST]
-+ Request (application/json)
-
         {
             "company_id": 1,
             "name": Riot Games,
@@ -145,27 +109,45 @@ Attributes belonging to a **company**
             "website": www.riotgames.com/
         }
 
+### Add a Company [POST]
++ Request (application/json)
+
+        {
+            "company_id": 2,
+            "name": Blizzard,
+            "deck": Created WOW,
+            "description": Creator of the popular MMO World of Warcraft,
+            "image": image2.jpg,
+            "address": 16215 Alton Pkwy,
+            "city": Irving,
+            "state": California,
+            "country": USA, 
+            "phone": ,
+            "date_founded": 11-23-2004,
+            "website": www.blizzard.com/
+        }
+
 + Response 201 (application/json)
 
     + Header
     
-            Location: /models/Company.py/3
+            Location: /models/Company.py/2
     
     + Body
     
             {
-                "company_id": 1,
-                "name": Riot Games,
-                "deck": Created LOL,
-                "description": Creator of the popular MOBA League of Legends,
-                "image": image.jpg,
-                "address": 2450 Broadway, Santa Monica, CA 90404,
-                "city": Santa Monica,
+                "company_id": 2,
+                "name": Blizzard,
+                "deck": Created WOW,
+                "description": Creator of the popular MMO World of Warcraft,
+                "image": image2.jpg,
+                "address": 16215 Alton Pkwy,
+                "city": Irving,
                 "state": California,
                 "country": USA, 
                 "phone": ,
-                "date_founded": 10-27-2009,
-                "website": www.riotgames.com/
+                "date_founded": 11-23-2004,
+                "website": www.blizzard.com/
             }
 
 ### Remove a Company [DELETE]
@@ -184,11 +166,10 @@ Attributes belonging to a **company**
 ### Lookup a Job [GET]
 + Response 200 (application/json)
 
-        [
-            {
+        {
             
-            }
-        ]
+        }
+    
 
 ### Add a Job [POST]
 + Request (application/json)
