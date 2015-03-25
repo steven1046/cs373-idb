@@ -4,12 +4,15 @@ from configuration.app import app, test_app
 from configuration.config import config
 from flask_sqlalchemy import SQLAlchemy
 
-# db = SQLAlchemy(app)
 
-# Todo. When running model tests you have to uncomment the line below. Need to see how I can change what database is
-# Todo.     being used in Model class
+#defaults to prod db. run_models_test will change this to sqlalchemy object using sqlite db
+db = SQLAlchemy(app)
 
-db = SQLAlchemy(test_app)
+
+def change_db(new_db):
+    global db
+    db = new_db
+
 
 if __name__ == '__main__':
     print(config["SQLALCHEMY_DATABASE_URI"])

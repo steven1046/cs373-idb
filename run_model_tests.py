@@ -1,13 +1,25 @@
 __author__ = 'nicopelico'
 
-from configuration.app import test_app
+from flask import Flask
+from configuration.config import test_config
+from flask_sqlalchemy import SQLAlchemy
+from configuration.database import db, change_db
+from configuration.config import config
+
+app = Flask(__name__)
+app.config.from_object(test_config)
+db = SQLAlchemy(app)
+change_db(db)
+
+from api import game, company, genre, platform
+app.register_blueprint(game.games, url_prefix=config['ROUTE_PREFIX'] + "games")
+app.register_blueprint(company.companies, url_prefix=config['ROUTE_PREFIX'] + "companies")
+app.register_blueprint(genre.genres, url_prefix=config["ROUTE_PREFIX"] + "genres")
+app.register_blueprint(platform.platforms, url_prefix=config["ROUTE_PREFIX"] + "platforms")
+
 from models import Game, Company, Genre, Platform, Game_Genre, Game_Platform
-from configuration.database import db
 from unittest import main, TestCase
 from datetime import datetime, date
-from flask import request
-from flask import session
-import sqlite3
 
 
 class TestModels(TestCase):
@@ -305,5 +317,5 @@ if __name__ == "__main__":
     # !!!!! Apparently sqlite doesn't enforce foreign key constraints by default !!!!
     db.engine.execute("PRAGMA foreign_keys = ON")
 
-    with test_app.test_request_context("/"):
+    with app.test_request_context("/"):
         main()
