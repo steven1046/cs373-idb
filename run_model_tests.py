@@ -5,6 +5,8 @@ from models import Game, Company
 from configuration.database import db_test
 from unittest import main, TestCase
 from datetime import datetime
+from flask import request
+from flask import session
 import sqlite3
 
 
@@ -33,8 +35,13 @@ class TestModels(TestCase):
                     "test_city", "test_state", "test_country", "555-555-5555", datetime.today(), "company url")
         c = Company.Company(*test_company1)
         db_test.session.add(c)
+
         db_test.session.commit()
         db_test.session.add(c)
+
+        # session.add(c)
+        # session.commit()
+        # session.add(c)
         result = Company.find_by_id(100)
         d = c.to_dict()
         for k in expected:
@@ -75,10 +82,28 @@ class TestModels(TestCase):
 
 
 if __name__ == "__main__":
-    conn = sqlite3.connect(":memory")
-    c = conn.cursor()
-    c.execute("attach database ':memory:' as mydb")
-    c.execute('''CREATE TABLE mydb.app.companies (
+    # conn = sqlite3.connect(":memory:")
+    # c = conn.cursor()
+    # c.execute('''CREATE TABLE companies (
+    #               company_id INTEGER NOT NULL,
+    #               name CHARACTER VARYING,
+    #               deck TEXT,
+    #               description TEXT,
+    #               image CHARACTER VARYING,
+    #               address CHARACTER VARYING,
+    #               city CHARACTER VARYING,
+    #               state CHARACTER VARYING,
+    #               country CHARACTER VARYING,
+    #               phone CHARACTER VARYING,
+    #               date_founded DATE,
+    #               website CHARACTER VARYING,
+    #               CONSTRAINT pk_companies PRIMARY KEY (company_id)
+    #               )''')
+    #
+    # conn.commit()
+
+    db_test.create_all()
+    db_test.engine.execute('''CREATE TABLE companies (
                   company_id INTEGER NOT NULL,
                   name CHARACTER VARYING,
                   deck TEXT,
@@ -94,5 +119,12 @@ if __name__ == "__main__":
                   CONSTRAINT pk_companies PRIMARY KEY (company_id)
                   )''')
 
+    conn = db_test.engine.connect()
+    result = conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
+
+    for row in result:
+        print(row)
+
     with test_app.test_request_context("/"):
+        test_app.open_session(request)
         main()

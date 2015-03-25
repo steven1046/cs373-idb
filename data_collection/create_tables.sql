@@ -1,10 +1,10 @@
 -- companies, games, genres, platforms, game_genres, game_platforms
 
--- Table: app.companies
+-- Table: companies
 
--- DROP TABLE app.companies;
+-- DROP TABLE companies;
 
-CREATE TABLE app.companies
+CREATE TABLE companies
 (
   company_id integer NOT NULL,
   name character varying,
@@ -23,15 +23,15 @@ CREATE TABLE app.companies
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE app.companies
+ALTER TABLE companies
   OWNER TO "dataUser";
 
 
--- Table: app.games
+-- Table: games
 
--- DROP TABLE app.games;
+-- DROP TABLE games;
 
-CREATE TABLE app.games
+CREATE TABLE games
 (
   game_id integer NOT NULL,
   name character varying,
@@ -42,13 +42,13 @@ CREATE TABLE app.games
   company_id integer NOT NULL,
   CONSTRAINT pk_games PRIMARY KEY (game_id),
   CONSTRAINT fk_company_id FOREIGN KEY (company_id)
-      REFERENCES app.companies (company_id) MATCH SIMPLE
+      REFERENCES companies (company_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE app.games
+ALTER TABLE games
   OWNER TO "dataUser";
 
 -- Index: app.fki_company_id
@@ -56,16 +56,16 @@ ALTER TABLE app.games
 -- DROP INDEX app.fki_company_id;
 
 CREATE INDEX fki_company_id
-  ON app.games
+  ON games
   USING btree
   (company_id);
 
 
--- Table: app.genres
+-- Table: genres
 
--- DROP TABLE app.genres;
+-- DROP TABLE genres;
 
-CREATE TABLE app.genres
+CREATE TABLE genres
 (
   genre_id integer NOT NULL,
   genre character varying NOT NULL,
@@ -74,15 +74,15 @@ CREATE TABLE app.genres
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE app.genres
+ALTER TABLE genres
   OWNER TO "dataUser";
 
 
--- Table: app.platforms
+-- Table: platforms
 
--- DROP TABLE app.platforms;
+-- DROP TABLE platforms;
 
-CREATE TABLE app.platforms
+CREATE TABLE platforms
 (
   platform_id integer NOT NULL,
   platform character varying NOT NULL,
@@ -91,51 +91,51 @@ CREATE TABLE app.platforms
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE app.platforms
+ALTER TABLE platforms
   OWNER TO "dataUser";
 
 
--- Table: app.game_genres
+-- Table: game_genres
 
--- DROP TABLE app.game_genres;
+-- DROP TABLE game_genres;
 
-CREATE TABLE app.game_genres
+CREATE TABLE game_genres
 (
   game_id integer NOT NULL,
   genre_id integer NOT NULL,
   CONSTRAINT pk_game_genres PRIMARY KEY (game_id, genre_id),
   CONSTRAINT fk_game_id FOREIGN KEY (game_id)
-      REFERENCES app.games (game_id) MATCH SIMPLE
+      REFERENCES games (game_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT fk_genre_id FOREIGN KEY (genre_id)
-      REFERENCES app.genres (genre_id) MATCH SIMPLE
+      REFERENCES genres (genre_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE app.game_genres
+ALTER TABLE game_genres
   OWNER TO "dataUser";
 
 
--- Table: app.game_platforms
+-- Table: game_platforms
 
--- DROP TABLE app.game_platforms;
+-- DROP TABLE game_platforms;
 
-CREATE TABLE app.game_platforms
+CREATE TABLE game_platforms
 (
   game_id integer NOT NULL,
   platform_id integer NOT NULL,
   CONSTRAINT pk_game_platforms PRIMARY KEY (game_id, platform_id),
   CONSTRAINT fk_game_id FOREIGN KEY (game_id)
-      REFERENCES app.games (game_id) MATCH SIMPLE
+      REFERENCES games (game_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT fk_platform_id FOREIGN KEY (platform_id)
-      REFERENCES app.platforms (platform_id) MATCH SIMPLE
+      REFERENCES platforms (platform_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE app.game_platforms
+ALTER TABLE game_platforms
   OWNER TO "dataUser";

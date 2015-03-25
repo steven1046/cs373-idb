@@ -6,7 +6,6 @@ from utils.json_utils import to_json
 
 class Genre(db.Model):
     __tablename__ = "genres"
-    __table_args__ = {"schema": "app"}
 
     genre_id = db.Column(db.Integer, primary_key=True)
     genre = db.Column(db.String(80))

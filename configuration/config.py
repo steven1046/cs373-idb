@@ -15,8 +15,9 @@ config['SQLALCHEMY_DATABASE_URI'] = "%s://%s:%s/%s" % (config["DATABASE_ADAPTER"
 
 test_config = {
     "DATABASE_ADAPTER": "sqlite",
-    "DATABASE_NAME": "app.db",
+    "DATABASE_NAME": ":memory:",
     "DEBUG": True
 }
+
 
 

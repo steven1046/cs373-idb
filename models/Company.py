@@ -1,11 +1,11 @@
 __author__ = 'alexanderventura'
 
 from configuration.database import db
+from configuration.config import config
 from utils.json_utils import to_json
 
 class Company(db.Model) :
     __tablename__ = "companies"
-    __table_args__ = {"schema": "app"}
 
     company_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
@@ -25,7 +25,8 @@ class Company(db.Model) :
 
 
 
-    def __init__(self, company_id, name, deck, description, image, address, city, state, country, phone, date_founded, website) :
+    def __init__(self, company_id, name, deck, description, image, address, city, state, country, phone, date_founded,
+                 website, test=False) :
         self.company_id = company_id
         self.name = name
         self.deck = deck
@@ -38,6 +39,9 @@ class Company(db.Model) :
         self.phone = phone
         self.date_founded = date_founded
         self.website = website
+
+        if test:
+            Company.__table_args__ = None
 
     def __repr__(self) :
         return str(self.to_dict())

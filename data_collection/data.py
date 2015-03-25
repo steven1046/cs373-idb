@@ -130,7 +130,7 @@ def normalize(games) :
 
 		# name,developed_games,id,deck,description,image,location_address,location_city,location_country,location_state,phone,website,date_founded"
 def insert_companies(companyList, cursor) :
-	queryString = "insert into app.companies (company_id, name, deck, description, image, address, city, state, country, phone, date_founded, website)" \
+	queryString = "insert into companies (company_id, name, deck, description, image, address, city, state, country, phone, date_founded, website)" \
 						" values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 	for company in companyList :
 		print(company["results"]["date_founded"])
@@ -142,7 +142,7 @@ def insert_companies(companyList, cursor) :
 
 
 def insert_games(games, cursor) :
-	queryString = "insert into app.games (game_id, name, image, original_release_date, deck, description, company_id) values (" \
+	queryString = "insert into games (game_id, name, image, original_release_date, deck, description, company_id) values (" \
 						"%s, %s, %s, %s, %s, %s, %s)"
 	for game in games :
 		g = games[game]
@@ -154,25 +154,25 @@ def insert_games(games, cursor) :
 
 
 def insert_game_platforms(platformList, cursor) :
-	queryString = "insert into app.game_platforms (game_id, platform_id) values (%s, %s)"
+	queryString = "insert into game_platforms (game_id, platform_id) values (%s, %s)"
 	for val in platformList :
 		cursor.execute(queryString, (val[0], val[2]))
 
 def insert_game_genres(genreList, cursor) :
-	queryString = "insert into app.game_genres (game_id, genre_id) values (%s, %s)"
+	queryString = "insert into game_genres (game_id, genre_id) values (%s, %s)"
 	for val in genreList :
 		cursor.execute(queryString, (val[0], val[2]))
 
 def insert_genres(genre_list, cursor) :
 	genre_ids = {(x[1], x[2]) for x in genre_list}
-	query_string = "insert into app.genres (genre_id, genre) values (%s, %s)"
+	query_string = "insert into genres (genre_id, genre) values (%s, %s)"
 	for val in genre_ids :
 		cursor.execute(query_string, (val[1], val[0]))
 	print(genre_ids)
 
 def insert_platforms(platform_list, cursor) :
 	platform_ids = {(x[1], x[2]) for x in platform_list}
-	query_string = "insert into app.platforms (platform_id, platform) values (%s, %s)"
+	query_string = "insert into platforms (platform_id, platform) values (%s, %s)"
 	for val in platform_ids :
 		cursor.execute(query_string, (val[1], val[0]))
 	print(platform_ids)

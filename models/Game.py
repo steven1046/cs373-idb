@@ -6,7 +6,6 @@ from models import Company
 
 
 class Game(db.Model):
-    __table_args__ = {'schema': 'app'}
     __tablename__ = 'games'
 
     game_id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +15,7 @@ class Game(db.Model):
     deck = db.Column(db.Text)
     description = db.Column(db.Text)
     # company_id = db.Column(db.Integer)
-    company_id = db.Column(db.Integer, db.ForeignKey("app.companies.company_id"))
+    company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
 
 
 

@@ -5,10 +5,9 @@ from utils.json_utils import to_json
 
 class Game_Genre(db.Model):
     __tablename__ = "game_genres"
-    __table_args__ = {"schema": "app"}
 
-    game_id = db.Column(db.Integer, db.ForeignKey("app.games.game_id"), primary_key=True)
-    genre_id = db.Column(db.Integer, db.ForeignKey("app.genres.genre_id"), primary_key=True)
+    game_id = db.Column(db.Integer, db.ForeignKey("games.game_id"), primary_key=True)
+    genre_id = db.Column(db.Integer, db.ForeignKey("genres.genre_id"), primary_key=True)
 
     def __init__(self, game_id, genre_id):
         self.game_id = game_id

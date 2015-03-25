@@ -6,7 +6,6 @@ from utils.json_utils import  to_json
 
 class Platform(db.Model):
     __tablename__ = "platforms"
-    __table_args__ = {"schema": "app"}
 
     platform_id = db.Column(db.Integer, primary_key=True)
     platform = db.Column(db.String(80))
