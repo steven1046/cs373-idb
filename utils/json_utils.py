@@ -11,11 +11,14 @@ def to_json(f):
 
     def serialize(*args, **kwargs):
         sql_alchemy_model = f(*args, **kwargs)
-        sql_alchemy_columns = sql_alchemy_model.__class__.__table__.columns
+        if sql_alchemy_model is None:
+            return {}
+        else:
+            sql_alchemy_columns = sql_alchemy_model.__class__.__table__.columns
 
-        columns = [c.key for c in sql_alchemy_columns]
-        jsonable = {c: getattr(sql_alchemy_model, c) for c in columns}
-        date_columns = [c.key for c in filter(is_date, sql_alchemy_columns)]
+            columns = [c.key for c in sql_alchemy_columns]
+            jsonable = {c: getattr(sql_alchemy_model, c) for c in columns}
+            date_columns = [c.key for c in filter(is_date, sql_alchemy_columns)]
 
         for c in date_columns:
             jsonable[c] = str(jsonable[c])

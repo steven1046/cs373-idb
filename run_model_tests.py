@@ -1,10 +1,10 @@
 __author__ = 'nicopelico'
 
 from configuration.app import test_app
-from models import Game, Company
-from configuration.database import db_test
+from models import Game, Company, Genre
+from configuration.database import db
 from unittest import main, TestCase
-from datetime import datetime
+from datetime import datetime, date
 from flask import request
 from flask import session
 import sqlite3
@@ -12,40 +12,129 @@ import sqlite3
 
 class TestModels(TestCase):
 
-    test_company = (100, "test_company", "a short summary", "a longer description", "fake_url", "101 abc lane",
-                    "test_city", "test_state", "test_country", "555-555-5555", "1-1-2000", "company url")
-    test_game = (1, "test", "fake_url", "1-10-2010", "a short summary", "a longer description", 100)
+    test_company = [100, "test_company", "a short summary", "a longer description", "fake_url", "101 abc lane",
+                    "test_city", "test_state", "test_country", "555-555-5555", date.min, "company url"]
+    test_company_dict = {"company_id": "100", "name": "test_company", "deck": "a short summary",
+                         "description": "a longer description", "image": "fake_url", "address": "101 abc lane",
+                         "city": "test_city", "state": "test_state", "country": "test_country", "phone": "555-555-5555",
+                         "date_founded": date.min, "website": "company url"}
+    test_game = [1, "test", "fake_url", date.min, "a short summary", "a longer description", 100]
 
     def test_company_model_creation_1(self):
-        expected = {"company_id": "100", "name": "test_company", "deck": "a short summary",
-                    "description": "a longer description", "image": "fake_url", "address": "101 abc lane",
-                    "city": "test_city", "state": "test_state", "country": "test_country", "phone": "555-555-5555",
-                    "date_founded": "1-1-2000", "website": "company url"}
         c = Company.Company(*self.test_company)
         d = c.to_dict()
-        for k in expected:
-            assert(d[k] == expected[k])
+        for k in TestModels.test_company_dict:
+            if k == "date_founded":
+                assert(str(d[k]).split()[0] == str(TestModels.test_company_dict[k]))
+            else:
+                assert(d[k] == TestModels.test_company_dict[k])
 
+    # Make sure new Company can be queried for
     def test_company_model_creation_2(self):
-        expected = {"company_id": "100", "name": "test_company", "deck": "a short summary",
-                    "description": "a longer description", "image": "fake_url", "address": "101 abc lane",
-                    "city": "test_city", "state": "test_state", "country": "test_country", "phone": "555-555-5555",
-                    "date_founded": "1-1-2000", "website": "company url"}
-        test_company1 = (100, "test_company", "a short summary", "a longer description", "fake_url", "101 abc lane",
-                    "test_city", "test_state", "test_country", "555-555-5555", datetime.today(), "company url")
-        c = Company.Company(*test_company1)
-        db_test.session.add(c)
-
-        db_test.session.commit()
-        db_test.session.add(c)
-
-        # session.add(c)
-        # session.commit()
-        # session.add(c)
+        c = Company.Company(*TestModels.test_company)
+        db.session.add(c)
+        db.session.commit()
         result = Company.find_by_id(100)
-        d = c.to_dict()
-        for k in expected:
-            assert(d[k] == expected[k])
+        # company was found
+        assert(len(result) > 0)
+
+    # Two companies should be returned for the query all()
+    def test_company_model_creation_3(self):
+        # one record in Companies so far
+        TestModels.test_company[0] = 200
+        d = Company.Company(*TestModels.test_company)
+        db.session.add(d)
+        db.session.commit()
+        result = Company.Company.query.all()
+        # two records to Company so far
+        assert(len(result) == 2)
+
+    # Trying to add Company that already exists
+    def test_company_model_creation_4(self):
+        d = Company.Company(*TestModels.test_company)
+        try:
+            db.session.add(d)
+            db.session.commit()
+            assert(False)
+        except:
+            db.session.rollback()
+
+    # Make sure game can be queried for once created
+    def test_game_model_creation_1(self):
+        g = Game.Game(*TestModels.test_game)
+        db.session.add(g)
+        db.session.commit()
+        result = Game.Game.query.all()
+        assert(len(result) == 1)
+
+    # Make sure there are now two games.
+    def test_game_model_creation_2(self):
+        # one game so far
+        TestModels.test_game[0] = 2
+        g = Game.Game(*TestModels.test_game)
+        db.session.add(g)
+        db.session.commit()
+        result = Game.Game.query.all()
+        assert(len(result) == 2)
+
+    # make sure games with duplicate ids can't be commited
+    def test_game_model_creation_3(self):
+        #two games so far
+        g = Game.Game(*TestModels.test_game)
+        try:
+            db.session.add(g)
+            db.session.commit()
+            assert(False)
+        except:
+            db.session.rollback()
+
+
+    # make sure game can't be added when the company doesnt exist
+    def test_game_model_creation_4(self):
+        # changing company_id to one that doesn't exist yet
+        TestModels.test_game[6] = 500
+        TestModels.test_game[0] = 3
+        g = Game.Game(*TestModels.test_game)
+        db.session.add(g)
+        try:
+            db.session.commit()
+            assert(False)
+        except:
+            db.session.rollback()
+
+    # creating genre
+    def test_genre_model_creation_1(self):
+        g = Genre.Genre(1, "test genre")
+        db.session.add(g)
+        result = Genre.Genre.query.all()
+        assert(len(result) == 1)
+
+    #creating another genre
+    def test_genre_model_creation_2(self):
+        g = Genre.Genre(2, "test genre 2")
+        db.session.add(g)
+        result = Genre.Genre.query.all()
+        assert(len(result) == 2)
+
+    #don't allow genre with duplicate id
+    def test_genre_model_creation_3(self):
+        g = Genre.Genre(2, "test genre 2")
+        db.session.add(g)
+        try:
+            db.session.commit()
+            assert(False)
+        except:
+            db.session.rollback()
+
+
+
+
+
+
+
+
+
+
 
     # def test_company_model_creation_3(self):
     #     test = (200, "test_company", "a short summary", "a longer description", "fake_url", "101 abc lane",
@@ -63,68 +152,13 @@ class TestModels(TestCase):
 
 
 
-
-
-
-
-# def model_test():
-#     # test_company = Company(company_id=100, name="test_company", deck="a short summary",
-#     #                        description="a longer description", image="fake_url", address="101 abc lane",
-#     #                        city="test_city", state="test_state", country="test_country", phone="555-555-5555",
-#     #                        date_founded="1-1-2000", website="company_url")
-#     # test_game = Game(game_id="1", name="test", image="fake_url", original_release_date="1-10-2010",
-#     #                  deck="short summary", description="longer description", company_id="100")
-#     db.session.add(test_company)
-#     db.session.add(test_game)
-#     print("here")
-#     result = find_by_id(1)
-#     print(type(result))
-
-
 if __name__ == "__main__":
-    # conn = sqlite3.connect(":memory:")
-    # c = conn.cursor()
-    # c.execute('''CREATE TABLE companies (
-    #               company_id INTEGER NOT NULL,
-    #               name CHARACTER VARYING,
-    #               deck TEXT,
-    #               description TEXT,
-    #               image CHARACTER VARYING,
-    #               address CHARACTER VARYING,
-    #               city CHARACTER VARYING,
-    #               state CHARACTER VARYING,
-    #               country CHARACTER VARYING,
-    #               phone CHARACTER VARYING,
-    #               date_founded DATE,
-    #               website CHARACTER VARYING,
-    #               CONSTRAINT pk_companies PRIMARY KEY (company_id)
-    #               )''')
-    #
-    # conn.commit()
 
-    db_test.create_all()
-    db_test.engine.execute('''CREATE TABLE companies (
-                  company_id INTEGER NOT NULL,
-                  name CHARACTER VARYING,
-                  deck TEXT,
-                  description TEXT,
-                  image CHARACTER VARYING,
-                  address CHARACTER VARYING,
-                  city CHARACTER VARYING,
-                  state CHARACTER VARYING,
-                  country CHARACTER VARYING,
-                  phone CHARACTER VARYING,
-                  date_founded DATE,
-                  website CHARACTER VARYING,
-                  CONSTRAINT pk_companies PRIMARY KEY (company_id)
-                  )''')
+    db.create_all()
 
-    conn = db_test.engine.connect()
-    result = conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
-
-    for row in result:
-        print(row)
+    # !!!!! Apparently sqlite doesn't enforce foreign key constraints by default !!!!
+    db.engine.execute("PRAGMA foreign_keys = ON")
 
     with test_app.test_request_context("/"):
-        test_app.open_session(request)
         main()
+        db.drop_all()

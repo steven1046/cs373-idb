@@ -17,8 +17,12 @@ class Game_Genre(db.Model):
         return ""
 
 
+# Create a connection between a game and a genre
+def create_game_genre(game_genre):
+    new_game_genre = Game_Genre(game_genre["game_id"], game_genre["genre_id"])
+    db.session.add(new_game_genre)
+    db.session.commit()
 
-# Todo. Add a connect game_id to genre_id function. Inserts into game_genres table
 
 #use to find the genre_id for the given game_id
 @to_json

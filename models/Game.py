@@ -14,7 +14,7 @@ class Game(db.Model):
     original_release_date = db.Column(db.DateTime)
     deck = db.Column(db.Text)
     description = db.Column(db.Text)
-    # company_id = db.Column(db.Integer)
+
     company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
 
 
@@ -32,8 +32,14 @@ class Game(db.Model):
         dict_form['original_release_date'] = str(dict_form['original_release_date'])
         return dict_form
 
-    def __repr__(self):
-        return str({k: self.k for k in self.__class__.__table__.columns})
+    def __repr__(self) :
+        return str(self.to_dict())
+
+    def to_dict(self):
+        d = {}
+        for column in self.__table__.columns:
+            d[column.name] = str(getattr(self, column.name))
+        return d
 
 
 

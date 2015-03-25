@@ -7,7 +7,7 @@ from utils.json_utils import to_json
 class Company(db.Model) :
     __tablename__ = "companies"
 
-    company_id = db.Column(db.Integer, primary_key=True)
+    company_id = db.Column("company_id", db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     deck = db.Column(db.Text)
     description = db.Column(db.Text)
@@ -20,7 +20,7 @@ class Company(db.Model) :
     date_founded = db.Column(db.DateTime)
     website = db.Column(db.String(80))
 
-    games = db.relationship("Game")
+    # games = db.relationship("Game", backref="gg", lazy="dynamic")
 
 
 
