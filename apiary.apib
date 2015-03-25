@@ -1,51 +1,120 @@
 FORMAT: 1A
 
 # Banana-Fish
-BananaFish is an API that allows people to find games, companies, and jobs in the gaming industry.
+**BananaFish** is an API that allows people to find games, companies, and jobs in the gaming industry.
+
 
 # Group Game
 API calls related to resources of the **Games API**
 
 ## Games [/models/Game.py]
-### Get a game [GET]
+Attributes belonging to a **game**
++ Game ID
++ Name
++ Image
++ Original Release Date
++ Deck
++ Description
++ Company ID
+
+### Lookup a Game [GET]
 + Response 200 (application/json)
 
-        [{
-          "game_id": 1, "name": "League of Legends", image: "image.jpg", 
-           original_release_date: "10-27-2009", deck: "MOBA", description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
-           company_id: 1
-        }, {
-          "game_id": 2, "name": "World of Warcraft", image: "image2.jpg", 
-           original_release_date: "11-23-2004", deck: "MMO", description: "a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment",
-           company_id: 2
-        }]
+        [
+            {
+                "game_id": 1,
+                "name": "League of Legends",
+                image: "image.jpg",
+                original_release_date: "10-27-2009",
+                deck: "MOBA",
+                description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
+                company_id: 1
+            },
+            {
+                "game_id": 2,
+                "name": "World of Warcraft",
+                image: "image2.jpg",
+                original_release_date: "11-23-2004",
+                deck: "MMORPG",
+                description: "a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment",
+                company_id: 2
+            }
+        ]
 
 ### Create a Game [POST]
 + Request (application/json)
 
         {
-          "game_id": 1, "name": "League of Legends", 
-           original_release_date: "10-27-2009", deck: "MOBA", description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
-           company_id: 1
+            "game_id": 1,
+            "name": "League of Legends",
+            original_release_date: "10-27-2009",
+            deck: "MOBA",
+            description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
+            company_id: 1
         }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "League of Legends" }
+    + Header
+    
+    + Body
+    
+            {
+                "id": 3,
+                "title": "League of Legends"
+            }
 
-## Company [/models/Company.py]
-### Retrieve a Company [GET]
+
+# Group Company
+## Companies [/models/Company.py]
+Attributes belonging to a **company**
++ Company ID
++ Name
++ Deck
++ Description
++ Image
++ Address
++ City
++ State
++ Country
++ Phone Number
++ Date Founded
++ Website
+
+### Lookup a Company [GET]
 + Response 200 (application/json)
 
-        [{
-            "company_id": 1, "name": Riot Games, "deck": Created LOL, "description": Creator of the popular MOBA League of Legends,
-            "image": image.jpg, "address": 2450 Broadway, Santa Monica, CA 90404,
-            "city": Santa Monica, "state": California, "country": USA, 
-            "phone": , "date_founded": 10-27-2009, "website": www.riotgames.com/
-        },  {
-            "company_id": 2, "name": Blizzard, "deck": Created WOW, "description": Creator of the popular MMO World of Warcraft,
-            "image": image2.jpg, "address": 16215 Alton Pkwy,
-            "city": Irving, "state": California, "country": USA, 
-            "phone": , "date_founded": 11-23-2004, "website": blizzard.com/
-        }]
-    
+        [
+            {
+                "company_id": 1,
+                "name": Riot Games,
+                "deck": Created LOL,
+                "description": Creator of the popular MOBA League of Legends,
+                "image": image.jpg,
+                "address": 2450 Broadway, Santa Monica, CA 90404,
+                "city": Santa Monica,
+                "state": California,
+                "country": USA, 
+                "phone": ,
+                "date_founded": 10-27-2009,
+                "website": www.riotgames.com/
+            },
+            {
+                "company_id": 2,
+                "name": Blizzard,
+                "deck": Created WOW,
+                "description": Creator of the popular MMO World of Warcraft,
+                "image": image2.jpg,
+                "address": 16215 Alton Pkwy,
+                "city": Irving,
+                "state": California,
+                "country": USA, 
+                "phone": ,
+                "date_founded": 11-23-2004,
+                "website": www.blizzard.com/
+            }
+        ]
+
+# Group Job
+## Job
+### Lookup a Job
