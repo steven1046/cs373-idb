@@ -26,54 +26,45 @@ Attributes belonging to a **game**
 ### Lookup a Game [GET]
 + Response 200 (application/json)
 
-        [
-            {
-                "game_id": 1,
-                "name": "League of Legends",
-                "image": "image.jpg",
-                "original_release_date": "10-27-2009",
-                "deck": "MOBA",
-                "description": "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
-                "company_id": 1
-            },
-            {
-                "game_id": 2,
-                "name": "World of Warcraft",
-                "image": "image2.jpg",
-                "original_release_date": "11-23-2004",
-                "deck": "MMORPG",
-                "description": "a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment",
-                "company_id": 2
-            }
-        ]
-
-### Add a Game [POST]
-+ Request (application/json)
-
         {
+            "url": "/models/Game.py/1",
             "game_id": 1,
             "name": "League of Legends",
+            "image": "image.jpg",
             "original_release_date": "10-27-2009",
             "deck": "MOBA",
             "description": "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
             "company_id": 1
         }
 
+### Add a Game [POST]
++ Request (application/json)
+
+        {
+            "name": "World of Warcraft",
+            "original_release_date": "11-23-2004",
+            "deck": "MMORPG",
+            "description": "a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment",
+            "company_id": 2
+        }
+
 + Response 201 (application/json)
 
     + Header
     
-            Location: /models/Game.py/3
+            Location: /models/Game.py/2
     
     + Body
     
             {
-                "id": 3,
-                "title": "League of Legends",
+                "url": "/models/Game.py/2",
+                "game_id": 2,
+                "name": "World of Warcraft",
+                "image": "image.jpg",
                 "original_release_date": "11-23-2004",
-                "deck": "MOBA",
-                "description": "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
-                "company_id": 1
+                "deck": "MMORPG",
+                "description": "a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment",
+                "company_id": 2
             }
 
 ### Remove a Game [DELETE]
