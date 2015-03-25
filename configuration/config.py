@@ -4,7 +4,9 @@ config = {
     "DATABASE_HOST": "localhost",
     "DATABASE_PORT": "5432",
     "API_VER": "v1",
-    "DEBUG": True
+    "DEBUG": True,
+    "HOST": "0.0.0.0",
+    "PORT": 80
 }
 
 
