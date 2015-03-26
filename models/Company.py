@@ -36,35 +36,38 @@ class Company(db.Model) :
         self.date_founded = date_founded
         self.website = website
 
+    #prints out the dictionary as a string
     def __repr__(self) :
         return str(self.to_dict())
 
+    #creates a dictionary representing the model for making a json
     def to_dict(self):
         d = {}
         for column in self.__table__.columns:
             d[column.name] = str(getattr(self, column.name))
         return d
 
-def create_company(company) :
-	new_company = Company(company["company_id"], company["name"], company["deck"], company["description"],
-						company["image"], company["address"], company["city"], company["state"], company["country"], 
-						company["phone"], company["date_founded"], company["website"])
-	db.session.add(new_company)
-	db.session.commit()
+    #Create a new company using the data sent in as a json
+    def create_company(company) :
+    	new_company = Company(company["company_id"], company["name"], company["deck"], company["description"],
+    						company["image"], company["address"], company["city"], company["state"], company["country"], 
+    						company["phone"], company["date_founded"], company["website"])
+    	db.session.add(new_company)
+    	db.session.commit()
 
+    #Returns a json of the company that matches the company id
+    @to_json
+    def find_by_id(company_id):
+        return Company.query.filter_by(company_id=company_id).first()
 
-@to_json
-def find_by_id(company_id):
-    return Company.query.filter_by(company_id=company_id).first()
+    #Returns a json of a dictionary for each company
+    @to_json
+    def find_all_companies():
+        return Company.query.all()
 
-
-@to_json
-def find_all_companies():
-    return Company.query.all()
-
-# @to_json
-# def get_company_games(company_id):
-#     return Company.query.join(Game, Game.c.)
+    # @to_json
+    # def get_company_games(company_id):
+    #     return Company.query.join(Game, Game.c.)
 
 
 
