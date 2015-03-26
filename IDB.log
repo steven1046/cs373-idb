@@ -1,0 +1,335 @@
+commit 4e8bcf2041a5eaec8bb985a5b55b8d47899683ae
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Mar 26 17:56:16 2015 -0500
+
+    renamed the report
+
+commit 0e0862e49afcc20fefe62a559a042a569b55a817
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Mar 26 17:55:08 2015 -0500
+
+    Added comments to the models, combined the models in one file to run pydoc, and uploaded the report
+
+commit f2f4a4b1fe250f3a545ca5b2ffee3fdbdfc24ee5
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Thu Mar 26 16:43:32 2015 -0500
+
+    Fixed Attributes for Jobs.
+
+commit 41ce10283ebeb33ee2affc62af6b544dcb9dbcac
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Thu Mar 26 16:05:56 2015 -0500
+
+    Added Jobs.  May need to make changes to job attributes.
+
+commit 1219d8da2eaa41af322eedcae8236cc25811b07c
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Mar 26 15:57:36 2015 -0500
+
+    update apiary
+
+commit ab1c9f3769b56d7dbc622276ff9eed7be22a0704
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Mar 26 13:58:22 2015 -0500
+
+    Added api call get all jobs, need to fill in missing examples when we decide on the model
+
+commit 105f66601d45c795bf85968a9ccb13d31143b4ce
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Mar 26 13:56:11 2015 -0500
+
+    Added api call get all companies
+
+commit 1ecbc6339da698a3e2ba9ff5d6bb3efcdad33e53
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Mar 26 13:48:56 2015 -0500
+
+    Added get all games
+
+commit 805691620006cd4471db93c0b41463fc5f6f4a95
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Thu Mar 26 12:52:20 2015 -0500
+
+    Removed "Delete" Actions for all pillars.
+
+commit 2407545141ac34c0f15ae2f63b44019b28b2320e
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Thu Mar 26 12:47:05 2015 -0500
+
+    Added some random attributes I think are necessary for Jobs.
+
+commit 3bfab79271ec7884dafd1561b8a270a68f72a17a
+Author: nicoUT <nicoavasquez@yahoo.com>
+Date:   Thu Mar 26 12:06:10 2015 -0500
+
+    Rename run_model_tests.py to tests.py
+
+commit 8a57e604cdb84210d65752d70699a3186b4a598a
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Thu Mar 26 02:07:02 2015 -0500
+
+    companies api endpoints
+
+commit b14796323a733c1cf070bd1d8ad5adae193968f8
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Wed Mar 25 20:55:28 2015 -0500
+
+    added a few endpoints
+
+commit 74d9c429844be53fed2940cd98a4aab536753662
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Wed Mar 25 19:50:06 2015 -0500
+
+    Fixed the relationship between game and game genre in the UML diagram
+
+commit e79171518eb939eba6d4f7138cb46e9b34aa8c38
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Wed Mar 25 19:43:17 2015 -0500
+
+    Adjusted UML.pdf
+
+commit 24cfd6d4996963c80eee3c607615e628a7eb0bf2
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Wed Mar 25 19:37:53 2015 -0500
+
+    created the UML diagram
+
+commit ae3d782b1a085fbb3e0af3dd199908efed4142b1
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Wed Mar 25 18:37:34 2015 -0500
+
+    Tests now run without changing database.py
+
+commit e5ff4eb0d818dfd660965893e4d1b92868d48487
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Wed Mar 25 16:46:59 2015 -0500
+
+    Tests for models done?. Need to change the definition for db in database.py when running tests. Use test_app version.
+
+commit acb053e279516999b622f99b59de3b5d093fc76b
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 16:08:20 2015 -0500
+
+    Cleaned up Code.
+
+commit ce5375204249b2527d58f1791397b7c0a0357c26
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Wed Mar 25 16:04:54 2015 -0500
+
+    changing to port 80
+
+commit 9277e73f84dc09a85b09454b221e6c13e39e89b3
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 15:59:52 2015 -0500
+
+    Trying to implement url for each value
+
+commit b80872f67834ffabe547d871921b0fe9c781d9d0
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 15:52:12 2015 -0500
+
+    Trying to get Adding Game to work.
+
+commit cf44c8e41ab581da8811fe4a1a30967f829e8651
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Wed Mar 25 15:51:02 2015 -0500
+
+    cleaning requirements
+
+commit fe7fc63b4fb4918300916a4fb31ce9c0680399d1
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 15:28:04 2015 -0500
+
+    Added DELETE action for Game, Company & Job.
+
+commit cb6de5e726480ecbb1a898b817e13575b1781f1f
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 15:16:28 2015 -0500
+
+    Added a bit GET & POST action for Job.
+
+commit f00ea0a1166b6d69b7f69070af91033faee8bccf
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 14:50:12 2015 -0500
+
+    Have to save because some random script is causing it to lag.
+
+commit 2b95357dbb137b718c39e6ec3d9c09ae3cd806cd
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 14:47:24 2015 -0500
+
+    Trying to get Create Game to work.
+
+commit 7f0ef0429f701af988c84716817bf57eebba90da
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Wed Mar 25 14:25:14 2015 -0500
+
+    requirements
+
+commit 9c96de13ffe3095fbc83bfdeee6563cc1cc4ad7f
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Wed Mar 25 14:17:14 2015 -0500
+
+    cors
+
+commit e1487741c2b20d75dee9627016334757e7fe26da
+Author: Andy Tang <tang.andy91@gmail.com>
+Date:   Wed Mar 25 14:23:03 2015 -0500
+
+    Formatted Apiary.
+
+commit 0a5d373996c41a7ba43427817a90d9050fc4b299
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Wed Mar 25 14:00:38 2015 -0500
+
+    Working on tests. Tests use sqlite database. If you want to run the tests you need to switch out the definitions for db in database.py. Looking for a way around this.
+
+commit 3c59b0a7ed5c45f8bb539d92d7a69886afa07593
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Tue Mar 24 21:46:26 2015 -0500
+
+    Working on tests. Need to make sure all POST methods are working now.
+
+commit ca855ce65295345117bdc699c2a17ed79d684cd5
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Tue Mar 24 18:29:24 2015 -0500
+
+    working on unit tests for models.
+
+commit 7455de19060769020e13e4c7ea2a102b5d4943db
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Tue Mar 24 14:14:35 2015 -0500
+
+    Working on models. Added foreign key relationships.
+
+commit 3ea61373ce5cc092e38205f3c767cf04ea789866
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Tue Mar 24 12:19:54 2015 -0500
+
+    Working on models and api. All get methods should be working. Still need to test more.
+
+commit 5cefeb424ed138709cadd1731d4d33ebbe7288ef
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Mon Mar 23 18:40:16 2015 -0500
+
+    json serialization and games.get
+
+commit 2f90431de5b2183ecd00425759cbc0022b35319e
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Mon Mar 23 18:39:40 2015 -0500
+
+    json serialization and games.get
+
+commit 67cb9bbf037be8c97e812a43f2665bceadb09909
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Mon Mar 23 18:18:38 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 86a70e3f91b98f06dc971f559a0e2e806f6ef05b
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Mon Mar 23 18:14:54 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit c771e8a400c69adde7ae67fa7a174d1b76ec0aec
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Mon Mar 23 18:01:32 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 3474f6a6821e637e0eb194301bd358af107b0d9e
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Mon Mar 23 17:45:30 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 53360353c1d1f97397600da7096c8627fa661ea3
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Mon Mar 23 17:40:44 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 1f3ad005460868dd52d4937bdef8a4eabda2be55
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Mon Mar 23 17:35:33 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit b7946af50c5f0c5a887f9eee32bcbbd5870303e7
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Mon Mar 23 15:35:33 2015 -0500
+
+    virtual env
+
+commit ab02fd7435c5a80b56e63516167231d8419b2eef
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Mon Mar 23 15:34:53 2015 -0500
+
+    db configuration + virtualenv
+
+commit 5b5ec80e25f919b6c90ed1e7c8cd61c34877f219
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Fri Mar 13 13:34:36 2015 -0500
+
+    pushing virtualenv
+
+commit 78418def28d8a60745426f1725fdb5525be5ba51
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Sun Mar 22 19:22:39 2015 -0500
+
+    Working on Game and Company model. Models match the schema for the tables in data_collection/create_tables.sql
+
+commit 8cd66b4a46a751bdd7d22107315a510bf95915f4
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Mon Mar 16 20:02:46 2015 -0500
+
+    Working on data collection. Added a script to create tables.
+
+commit 4a429c5c621b712b53e0ca612bbe907f3c141bbb
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Mar 12 21:35:19 2015 -0500
+
+    changed games list back to dict.
+
+commit ca7d1b77cad41d4954ac1965b4c5199b3a2538b1
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Mar 12 18:03:05 2015 -0500
+
+    Inserting into platforms and genres table working. Need to see what other data is needed if any.
+
+commit 46022a1d05bf6ff330f63dfa1db7c2959b149479
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Mar 12 17:56:40 2015 -0500
+
+    working on inserting to tables. Inserting into games table working.
+
+commit eef967e82d987e221b5bbc6beb22ebabd1bb2988
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Mar 12 16:26:21 2015 -0500
+
+    Pulled platforms and genres out to their own list. Added foreign keys to platforms and genres lists. Need to write database insert queries now.
+
+commit a896bc1cf392c96e4962e3e15b8c12db09eeddc4
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Mar 12 14:30:29 2015 -0500
+
+    .
+
+commit d43861100a8634939845cf5a9d56ec5c0f776774
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Mar 12 14:27:37 2015 -0500
+
+    working on collecting data and normalizing eveything.
+
+commit 9c0df9512bca55970b4bf23515800b2cf5024deb
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Wed Mar 11 15:27:50 2015 -0500
+
+    basic setup, incomplete
+
+commit 6d534087f973b2dab75329081810e6013ac598d3
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Wed Mar 11 13:48:31 2015 -0500
+
+    init
