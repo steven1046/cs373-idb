@@ -218,7 +218,7 @@ Attributes belonging to a **company**
 # Group Job
 In this section, if a user is interested with a *specific* company, they can
 search up variety types of jobs/careers that companies are hiring.
-## Job [/models/Job.py/{job_id}]
+## Job [/models/Job.py/{job_id}/models/Company.py/{company_id}]
 Attributes belonging to a **Job**:
 + Company ID
 + Company Name
@@ -230,6 +230,7 @@ Attributes belonging to a **Job**:
 + Job Location
 
 + Parameters
+    + company_id (required, number, `1`) ... ID of the Company in form of an integer
     + job_id (required, number, `1`) ... ID of the Job in form of an integer
 
 ### Lookup a Job [GET]
