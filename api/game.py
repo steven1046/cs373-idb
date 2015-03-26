@@ -20,7 +20,6 @@ def create():
 @games.route('/<game_id>', methods=['GET'])
 def get(game_id):
     try:
-        print(game_id)
         game = Game.find_by_id(game_id)
         return jsonify(game), 200
     except Exception as e:
