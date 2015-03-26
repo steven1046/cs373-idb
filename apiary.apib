@@ -255,6 +255,20 @@ Attributes belonging to a **Job**:
 ### Add a Job [POST]
 + Request (application/json)
 
+        {
+            "company_id": 1,
+            "company_name": "Riot Games",
+            "job_position": "Lead Art Coordinator",
+            "job_description": "As Lead Art Coordinator, you’ll work with art leadership to understand the organization's needs, building a highly effective team to address those must-have elements. You’ll hire, coach, and train art coordinators, making sure they’re continually growing their talent. Leading by example, you’ll build daily responsibilities, establish workflows, and get down and dirty with the team. Your ability to anticipate the needs of others will help guide the team as it evolves and supports art department strategies.",
+            "job_expectations": "A mentor, A master motivator, A multitasker, Adaptable, A positive influence",
+            "job_responsibilities": "Provide clear direction and accountability to art coordinators
+                                    Share and encourage effective processes and work to take the coordination team to new heights
+                                    Maintain communication with Art leadership to ensure alignment across teams
+                                    Lead large projects and nail them every time 
+                                    Bring two-plus years of hands-on manager XP to the role",
+            "job_location": "Santa Monica, USA"
+        }
+
 + Response 201 (application/json)
 
     + Header
@@ -266,12 +280,16 @@ Attributes belonging to a **Job**:
             {
                 "company_id": 1,
                 "company_name": "Riot Games",
-                "job_id": 1
-                "job_position": Game Developer,
-                "job_description": "",
-                "job_expectations": ""
-                "job_responsibilities": ""
-                "job_location": "",
+                "job_id": 2,
+                "job_position": "Lead Art Coordinator",
+                "job_description": "As Lead Art Coordinator, you’ll work with art leadership to understand the organization's needs, building a highly effective team to address those must-have elements. You’ll hire, coach, and train art coordinators, making sure they’re continually growing their talent. Leading by example, you’ll build daily responsibilities, establish workflows, and get down and dirty with the team. Your ability to anticipate the needs of others will help guide the team as it evolves and supports art department strategies.",
+                "job_expectations": "A mentor, A master motivator, A multitasker, Adaptable, A positive influence",
+                "job_responsibilities": "Provide clear direction and accountability to art coordinators
+                                        Share and encourage effective processes and work to take the coordination team to new heights
+                                        Maintain communication with Art leadership to ensure alignment across teams
+                                        Lead large projects and nail them every time 
+                                        Bring two-plus years of hands-on manager XP to the role",
+                "job_location": "Santa Monica, USA"
             }
             
 
@@ -282,9 +300,31 @@ Attributes belonging to a **Job**:
 
         {
             "job1": {
-                
+                "company_id": 1,
+                "company_name": "Riot Games",
+                "job_id": 1,
+                "job_position": "Product Manager",
+                "job_description": "As the Product Manager, you’ll lead a cross functional, massively collaborative team that focuses on more than exceptional origination through delivery of multiple products and initiatives. Flexibility is your middle name and you’re at ease handling anything from brainstorming ways to delight players at community events to the core building blocks of our organized play strategy. Owning products and leading teams, you’re an inspiring coach, naturally leveling up the people around you.
+                                    As a Dublin Rioter, you’ll join a smaller team of internationally and culturally diverse professionals that share our prioritization of player experience, rejection of convention and maniacal passion for gaming. With teams in Player Support, Community and Marketing, Riot Games Dublin is dedicated to creating unique player experiences that show local players they aren't lost in translation.",
+                "job_expectations": "Educated and experienced, A visionary, A seasoned leader, Self-motivated, Empathetic, A player",
+                "job_responsibilities": "Be the one-stop-shop for all publishing needs, from origination to launch, measuring successes and failures to improve products and programs, including: events, video, competitive play, and much more
+                                        Foster strong relationships with partners and senior leaders; XP with negotiations and influential communication skills will net you bonus points
+                                        Put your problem-solving, strategic and analytical skills to use, taking advantage of your skills and our available data to drive strategy and business action
+                                        Increase player satisfaction, knowing that the true “win” within your role means players freaking love what you’ve done, and other Riot regions adopt and implement your idea",
+                "job_location": "Dublin, Ireland"
             },
             "job2": {
-            
+                "company_id": 1,
+                "company_name": "Riot Games",
+                "job_id": 2,
+                "job_position": "Lead Art Coordinator",
+                "job_description": "As Lead Art Coordinator, you’ll work with art leadership to understand the organization's needs, building a highly effective team to address those must-have elements. You’ll hire, coach, and train art coordinators, making sure they’re continually growing their talent. Leading by example, you’ll build daily responsibilities, establish workflows, and get down and dirty with the team. Your ability to anticipate the needs of others will help guide the team as it evolves and supports art department strategies.",
+                "job_expectations": "A mentor, A master motivator, A multitasker, Adaptable, A positive influence",
+                "job_responsibilities": "Provide clear direction and accountability to art coordinators
+                                        Share and encourage effective processes and work to take the coordination team to new heights
+                                        Maintain communication with Art leadership to ensure alignment across teams
+                                        Lead large projects and nail them every time 
+                                        Bring two-plus years of hands-on manager XP to the role",
+                "job_location": "Santa Monica, USA"
             }
         }
