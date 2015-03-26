@@ -24,9 +24,11 @@ def get(company_id):
     except Exception as e:
         return jsonify(error=str(e))
 
+@companies.route('/', methods=["GET"])
+def get_all():
+    try:
+        company = Company.find_all_companies()
+        return jsonify(company), 200
 
-
-
-
-
-
+    except Exception as e:
+        return jsonify(error=str(e))

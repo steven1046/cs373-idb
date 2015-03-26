@@ -25,3 +25,12 @@ def get(game_id):
         return jsonify(game), 200
     except Exception as e:
         return jsonify(error=str(e))
+
+
+@games.route('/', methods=['GET'])
+def get_all():
+    try:
+        games = Game.find_all()
+        return jsonify(games=games), 200
+    except Exception as e:
+        return jsonify(error=str(e))

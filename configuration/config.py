@@ -6,7 +6,7 @@ config = {
     "API_VER": "v1",
     "DEBUG": True,
     "HOST": "0.0.0.0",
-    "PORT": 80
+    "PORT": 5000
 }
 
 

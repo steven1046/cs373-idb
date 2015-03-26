@@ -17,8 +17,6 @@ class Game(db.Model):
 
     company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
 
-
-
     def __init__(self, game_id, name, image, original_release_date, deck, description, company_id):
         self.game_id = game_id
         self.name = name
@@ -27,10 +25,6 @@ class Game(db.Model):
         self.deck = deck
         self.description = description
         self.company_id = company_id
-
-    def serialize(self):
-        dict_form['original_release_date'] = str(dict_form['original_release_date'])
-        return dict_form
 
     def __repr__(self) :
         return str(self.to_dict())
@@ -42,12 +36,15 @@ class Game(db.Model):
         return d
 
 
-
-
 def create_game(game):
     new_game = Game(game["game_id"], game["name"], game["image"], game["original_release_date"], game["deck"], game["description"], game["company_id"])
     db.session.add(new_game)
     db.session.commit()
+
+
+@to_json
+def find_all():
+    return Game.query.all()
 
 
 @to_json

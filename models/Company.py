@@ -57,6 +57,11 @@ def create_company(company) :
 def find_by_id(company_id):
     return Company.query.filter_by(company_id=company_id).first()
 
+
+@to_json
+def find_all_companies():
+    return Company.query.all()
+
 # @to_json
 # def get_company_games(company_id):
 #     return Company.query.join(Game, Game.c.)
