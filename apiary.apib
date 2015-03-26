@@ -64,6 +64,34 @@ Attributes belonging to a **game**
                 "description": "a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment",
                 "company_id": 2
             }
+            
+#Get all Games [/models/Game.py]
+
+###Get a list of all Games [GET]
++ Response 200  (application/json)
+
+        {
+            "game1":
+            {
+                "game_id": 1,
+                "name": "League of Legends",
+                "image": "image.jpg",
+                "original_release_date": "10-27-2009",
+                "deck": "MOBA",
+                "description": "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements",
+                "company_id": 1
+            }, 
+            "game2":
+            {
+                "game_id": 2,
+                "name": "World of Warcraft",
+                "image": "image.jpg",
+                "original_release_date": "11-23-2004",
+                "deck": "MMORPG",
+                "description": "a massively multiplayer online role-playing game (MMORPG) created in 2004 by Blizzard Entertainment",
+                "company_id": 2
+            }
+        }
 
 
 
