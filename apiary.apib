@@ -66,6 +66,7 @@ Attributes belonging to a **game**
             }
 
 ### Remove a Game [DELETE]
+**Note: Can be removed, might not be necessary to have delete action**
 + Response 204
 
 
@@ -73,6 +74,7 @@ Attributes belonging to a **game**
 
 
 # Group Company
+User may search up companies of interest to look up basic information about them.
 ## Companies [/models/Company.py/{company_id}]
 Attributes belonging to a **company**
 + Company ID
@@ -151,6 +153,7 @@ Attributes belonging to a **company**
             }
 
 ### Remove a Company [DELETE]
+**Note: Can be removed, might not be necessary to have delete action**
 + Response 204
 
 
@@ -158,7 +161,18 @@ Attributes belonging to a **company**
 
 
 # Group Job
+In this section, if a user is interested with a *specific* company, they can
+search up variety types of jobs/careers that companies are hiring.
 ## Job [/models/Job.py/{job_id}]
+Attributes belonging to a **Job**:
++ Company ID
++ Company Name
++ Job ID
++ Job Position
++ Job Description
++ Job Expectations
++ Job Responsibilities
++ Job Location
 
 + Parameters
     + job_id (required, number, `1`) ... ID of the Job in form of an integer
@@ -167,7 +181,18 @@ Attributes belonging to a **company**
 + Response 200 (application/json)
 
         {
-            
+            "company_id": 1,
+            "company_name": "Riot Games",
+            "job_id": 1,
+            "job_position": "Product Manager",
+            "job_description": "As the Product Manager, you’ll lead a cross functional, massively collaborative team that focuses on more than exceptional origination through delivery of multiple products and initiatives. Flexibility is your middle name and you’re at ease handling anything from brainstorming ways to delight players at community events to the core building blocks of our organized play strategy. Owning products and leading teams, you’re an inspiring coach, naturally leveling up the people around you.
+                                As a Dublin Rioter, you’ll join a smaller team of internationally and culturally diverse professionals that share our prioritization of player experience, rejection of convention and maniacal passion for gaming. With teams in Player Support, Community and Marketing, Riot Games Dublin is dedicated to creating unique player experiences that show local players they aren't lost in translation.",
+            "job_expectations": "Educated and experienced, A visionary, A seasoned leader, Self-motivated, Empathetic, A player",
+            "job_responsibilities": "Be the one-stop-shop for all publishing needs, from origination to launch, measuring successes and failures to improve products and programs, including: events, video, competitive play, and much more
+                                    Foster strong relationships with partners and senior leaders; XP with negotiations and influential communication skills will net you bonus points
+                                    Put your problem-solving, strategic and analytical skills to use, taking advantage of your skills and our available data to drive strategy and business action
+                                    Increase player satisfaction, knowing that the true “win” within your role means players freaking love what you’ve done, and other Riot regions adopt and implement your idea",
+            "job_location": "Dublin, Ireland"
         }
     
 
@@ -176,5 +201,23 @@ Attributes belonging to a **company**
 
 + Response 201 (application/json)
 
+    + Header
+    
+            Location: /models/Job.py/2
+    
+    + Body
+    
+            {
+                "company_id": 1,
+                "company_name": "Riot Games",
+                "job_id": 1
+                "job_position": Game Developer,
+                "job_description": "",
+                "job_expectations": ""
+                "job_responsibilities": ""
+                "job_location": "",
+            }
+
 ### Remove a Job [DELETE]
+**Note: Can be removed, might not be necessary to have delete action**
 + Response 204
