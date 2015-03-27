@@ -38,19 +38,22 @@ class Game(db.Model):
             d[column.name] = str(getattr(self, column.name))
         return d
 
-    #Create a new game using the json sent in
-    def create_game(game):
-        new_game = Game(game["game_id"], game["name"], game["image"], game["original_release_date"], game["deck"], game["description"], game["company_id"])
-        db.session.add(new_game)
-        db.session.commit()
 
-    #Returns a list of all the games in a json
-    @to_json
-    def find_all():
-        return Game.query.all()
+#Create a new game using the json sent in
+def create_game(game):
+    new_game = Game(game["game_id"], game["name"], game["image"], game["original_release_date"], game["deck"], game["description"], game["company_id"])
+    db.session.add(new_game)
+    db.session.commit()
 
-    #Returns a json of the game model matching the game id passed in
-    @to_json
-    def find_by_id(game_id):
-        return Game.query.filter_by(game_id=game_id).first()
+
+#Returns a list of all the games in a json
+@to_json
+def find_all():
+    return Game.query.all()
+
+
+#Returns a json of the game model matching the game id passed in
+@to_json
+def find_by_id(game_id):
+    return Game.query.filter_by(game_id=game_id).first()
 
