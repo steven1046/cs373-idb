@@ -7,7 +7,7 @@ from models import Company
 class Job(db.Model):
 	__tablename__ = 'jobs'
 
-	job_id = db.Column(db.Integer, primary_key = True)
+	job_id = db.Column(db.String(80), primary_key = True)
 	job_title = db.Column(db.String(80))
 	url = db.Column(db.String(80))
 	description = db.Column(db.Text)
