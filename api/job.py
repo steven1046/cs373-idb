@@ -8,7 +8,9 @@ jobs = Blueprint("jobs", __name__)
 @jobs.route("/", methods=["POST"])
 def create():
     try:
+        print("creating job")
         Job.create_job(request.json)
+        print("finding job")
         job = Job.find_by_id(request.json["job_id"])
         return jsonify(job), 200
 

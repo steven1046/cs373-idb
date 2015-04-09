@@ -12,6 +12,7 @@ app.register_blueprint(platform.platforms, url_prefix=config["ROUTE_PREFIX"] + "
 # app.register_blueprint(job.jobs, url_prefix=config["ROUTE_PREFIX"] + "jobs")
 app.register_blueprint(test.test_blueprint, url_prefix=config["ROUTE_PREFIX"] + "tests")
 
+
 if __name__ == '__main__':
     print('Routing Table')
     print(app.url_map)

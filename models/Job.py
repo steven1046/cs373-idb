@@ -2,6 +2,7 @@ __author__ = 'Ruben Baeza'
 
 from configuration.database import db
 from utils.json_utils import to_json
+from sqlalchemy import inspect
 from models import Company
 
 
@@ -40,9 +41,12 @@ class Job(db.Model):
 
 #Create a new job using the json sent in
 def create_job(job):
-    print("before creating")
+    inspector = inspect(db.engine)
+
+    for table_name in inspector.get_table_names():
+        print(table_name)
+    print("here")
     new_job = Job(job["job_id"], job["job_title"], job["url"], job["description"], job["location"], job["company_name"], job["company_id"])
-    print("after creating")
     db.session.add(new_job)
     db.session.commit()
 
