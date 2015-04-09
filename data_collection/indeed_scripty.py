@@ -6,6 +6,8 @@ client = IndeedClient('1942078712727036')
 
 def main():
 
+	print("Starting")
+
 	conn_string = "host='localhost' dbname='banana-fish' user='dataUser' password='password!'"
 	conn = psycopg2.connect(conn_string)
 	cur = conn.cursor()
