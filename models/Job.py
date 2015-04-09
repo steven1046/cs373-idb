@@ -1,6 +1,6 @@
 __author__ = 'Ruben Baeza'
 
-from configuration.database import db 
+from configuration.database import db
 from utils.json_utils import to_json
 from models import Company
 
@@ -16,7 +16,7 @@ class Job(db.Model):
 
 	company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
 
-	#Create a new job object 
+	#Create a new job object
 	def __init__(self, job_id, job_title, url, description, location, company_name, company_id):
 		self.job_id = job_id
 		self.job_title = job_title
