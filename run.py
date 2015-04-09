@@ -13,6 +13,6 @@ app.register_blueprint(test.test_blueprint, url_prefix=config["ROUTE_PREFIX"] + 
 if __name__ == '__main__':
     print('Routing Table')
     print(app.url_map)
-    app.run(host=config["HOST"], port=config["PORT"], use_reloader=False)
+    app.run(host=config["HOST"], port=config["PORT"], use_reloader=False, debug=False)
     # app.run(use_reloader=False)
 
