@@ -2,12 +2,14 @@ __author__ = 'alexanderventura'
 
 from configuration.app import app
 from configuration.config import config
-from api import game, company, genre, platform, test
+from api import game, company, genre, platform, test, job
 
+app.register_blueprint(job.jobs, url_prefix=config["ROUTE_PREFIX"] + "jobs")
 app.register_blueprint(game.games, url_prefix=config['ROUTE_PREFIX'] + "games")
 app.register_blueprint(company.companies, url_prefix=config['ROUTE_PREFIX'] + "companies")
 app.register_blueprint(genre.genres, url_prefix=config["ROUTE_PREFIX"] + "genres")
 app.register_blueprint(platform.platforms, url_prefix=config["ROUTE_PREFIX"] + "platforms")
+# app.register_blueprint(job.jobs, url_prefix=config["ROUTE_PREFIX"] + "jobs")
 app.register_blueprint(test.test_blueprint, url_prefix=config["ROUTE_PREFIX"] + "tests")
 
 if __name__ == '__main__':
