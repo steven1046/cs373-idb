@@ -9,10 +9,11 @@ companies = Blueprint('companies', __name__)
 def create():
     try:
         Company.create_company(request.json)
-        return jsonify(200)
+        company = Company.find_by_id(request.json["company_id"])
+        return jsonify(company), 201
 
     except Exception as e:
-        return jsonify(error=str(e))
+        return jsonify(error="couldn't add game"), 400
 
 
 @companies.route('/<company_id>', methods=["GET"])

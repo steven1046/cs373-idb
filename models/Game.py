@@ -41,6 +41,7 @@ class Game(db.Model):
 
 #Create a new game using the json sent in
 def create_game(game):
+    print("in create game")
     new_game = Game(game["game_id"], game["name"], game["image"], game["original_release_date"], game["deck"], game["description"], game["company_id"])
     db.session.add(new_game)
     db.session.commit()

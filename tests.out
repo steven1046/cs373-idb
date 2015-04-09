@@ -1,1 +1,25 @@
-[]
+test_company_model_creation_1 (__main__.TestModels) ... ok
+test_company_model_creation_2 (__main__.TestModels) ... ok
+test_company_model_creation_3 (__main__.TestModels) ... ok
+test_company_model_creation_4 (__main__.TestModels) ... ok
+test_game_genre_model_creation_1 (__main__.TestModels) ... ok
+test_game_genre_model_creation_2 (__main__.TestModels) ... ok
+test_game_genre_model_creation_3 (__main__.TestModels) ... ok
+test_game_model_creation_1 (__main__.TestModels) ... ok
+test_game_model_creation_2 (__main__.TestModels) ... ok
+test_game_model_creation_3 (__main__.TestModels) ... ok
+test_game_model_creation_4 (__main__.TestModels) ... ok
+test_game_platform_model_creation_1 (__main__.TestModels) ... ok
+test_game_platform_model_creation_2 (__main__.TestModels) ... ok
+test_game_platform_model_creation_3 (__main__.TestModels) ... ok
+test_genre_model_creation_1 (__main__.TestModels) ... ok
+test_genre_model_creation_2 (__main__.TestModels) ... ok
+test_genre_model_creation_3 (__main__.TestModels) ... ok
+test_platform_model_creation_1 (__main__.TestModels) ... ok
+test_platform_model_creation_2 (__main__.TestModels) ... ok
+test_platform_model_creation_3 (__main__.TestModels) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.128s
+
+OK
