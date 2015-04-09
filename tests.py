@@ -18,8 +18,9 @@ app.register_blueprint(genre.genres, url_prefix=config["ROUTE_PREFIX"] + "genres
 app.register_blueprint(platform.platforms, url_prefix=config["ROUTE_PREFIX"] + "platforms")
 
 from models import Game, Company, Genre, Platform, Game_Genre, Game_Platform
-from unittest import main, TestCase
+from unittest import main, TestCase, runner, makeSuite, TextTestRunner
 from datetime import datetime, date
+from io import StringIO
 
 
 class TestModels(TestCase):
@@ -34,7 +35,6 @@ class TestModels(TestCase):
 
     def setUp(self):
         db.create_all()
-
 
     def tearDown(self):
         db.session.remove()
@@ -76,7 +76,6 @@ class TestModels(TestCase):
     # Trying to add Company that already exists
     def test_company_model_creation_4(self):
         result = Company.Company.query.all()
-        print(result)
         d = Company.Company(*TestModels.test_company)
         db.session.add(d)
         db.session.commit()
@@ -318,4 +317,13 @@ if __name__ == "__main__":
     db.engine.execute("PRAGMA foreign_keys = ON")
 
     with app.test_request_context("/"):
-        main()
+        log_file = 'tests.out'
+        f = open(log_file, "w")
+        runner = TextTestRunner(f, verbosity=2)
+        main(testRunner=runner)
+        f.close()
+        # main()
+
+
+
+
