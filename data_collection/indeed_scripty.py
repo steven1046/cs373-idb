@@ -1,6 +1,6 @@
 import fileinput, requests, json, psycopg2, indeed
 
-client = IndeedClient('1942078712727036')
+client = indeed.IndeedClient('1942078712727036')
 
 
 
