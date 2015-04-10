@@ -16,7 +16,7 @@ def run_unittest():
         pipe2 = Popen("cat tests.out", shell=True, stdout=PIPE)
         text = pipe2.communicate()[0]
         s = text.decode()
-        s = s.replace("\n", "<br />")
+        # s = s.replace("\n", "<br />")
         return jsonify(test_result=s), 200
     except Exception as e:
         return jsonify(error="error running unit tests"), 400
