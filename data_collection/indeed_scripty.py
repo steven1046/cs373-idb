@@ -25,7 +25,7 @@ def main():
 		print(" %d:", i)
 		i += 1
 		job = {}
-		company_id = row[0]
+		company_id = int(row[0])
 		company_name = row[1]
 
 		params = {

@@ -24,7 +24,7 @@ class Job(db.Model):
 		self.description = description
 		self.location = location
 		self.company_name = company_name
-		self.company_id = company_id
+		self.company_id = int(company_id)
 
 	#Returns a dictionary representation of the model
 	def __repr__(self):

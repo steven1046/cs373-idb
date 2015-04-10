@@ -1,3 +1,169 @@
+commit 39f51d7e7f76e9a4af97e34cf8738d43e08ba5ad
+Merge: afbbb39 7f61836
+Author: root <root@bananafish>
+Date:   Thu Apr 9 22:36:54 2015 +0000
+
+    Updated Job Model
+
+commit afbbb39ee5e5571d7bd7dd71facd168998403a43
+Author: root <root@bananafish>
+Date:   Thu Apr 9 22:35:02 2015 +0000
+
+    Updated Job Model
+
+commit 7f6183632c8e2c0b74128f17efbc4527cd1cd840
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 17:26:07 2015 -0500
+
+    Working on job api
+
+commit 61be01a4b9690908f811d451ae12c944089b4ab7
+Author: root <root@bananafish>
+Date:   Thu Apr 9 21:50:05 2015 +0000
+
+    Final Jobs Model and job scrape script
+
+commit e254e5e1fe0ca50cb1f3ed56933a73d6e11a909e
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 14:09:36 2015 -0500
+
+    test2
+
+commit a0b40854c96f3e1edba5b7dabbc0bfe6fbc00cf6
+Merge: 0e1123a b3cea2b
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 14:07:51 2015 -0500
+
+    Merge branch 'master' of https://github.com/steven1046/cs373-idb
+
+commit 0e1123ae02110001dcfc43dc17004c083b820340
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 14:07:39 2015 -0500
+
+    test
+
+commit 588093a6917b4b81deca86ad65636bbbd21ef97d
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 14:04:14 2015 -0500
+
+    Test of job scrape script
+
+commit b3cea2b8f45788ddafa11b20fa9150324c8c0b0a
+Author: nicoUT <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 13:47:03 2015 -0500
+
+    Update run.py
+
+commit 829ee2097d7e40668e510a2601a78073c8b70bbb
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 13:40:45 2015 -0500
+
+    Fixed file removal
+
+commit 8daa57dd5a432ab7b2d5722124d235d98bb13bd7
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 13:39:49 2015 -0500
+
+    Changed filename of job model
+
+commit 7f6c3cc79f0b65a4e7ce59b4000bff1e61708e92
+Merge: 7d6e8fd 4c7f9d7
+Author: root <root@bananafish>
+Date:   Thu Apr 9 18:37:34 2015 +0000
+
+    Merged
+
+commit 4c7f9d7e0cc053f8d7f595a33afe94c7d8125df5
+Merge: aacd412 cc0ee83
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 13:31:53 2015 -0500
+
+    Merge branch 'master' of https://github.com/steven1046/cs373-idb
+
+commit aacd4121786ae5e06fac07f59f738699ddf3c888
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 9 13:31:42 2015 -0500
+
+    added Job model
+
+commit 7d6e8fd574ea4f54fb96da6a92f991293467b710
+Author: root <root@bananafish>
+Date:   Thu Apr 9 18:14:48 2015 +0000
+
+    Added jobs Model
+
+commit cc0ee83d98d1daa05c4159d9759140fcec391650
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 12:31:28 2015 -0500
+
+    added endpoint for running tests
+
+commit 13f71e2c59b89e6875a14494cae97472128cba14
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Wed Apr 8 19:33:14 2015 -0500
+
+    api finished for companies and games
+
+commit 92d90547ef2655e9bb6fbc8761b8ba63aa0c9a90
+Author: Steven Zvonek <skz94@cs.utexas.edu>
+Date:   Fri Mar 27 20:54:07 2015 -0500
+
+    Update README.md
+
+commit 49becccab9123ec490433bc887fa5bfa62f47354
+Author: Steven Zvonek <skz94@cs.utexas.edu>
+Date:   Fri Mar 27 20:53:02 2015 -0500
+
+    Update README.md
+
+commit 81cec2c8e64d50d34cbe9e942f2e9ef5474129ae
+Author: Steven Zvonek <skz94@cs.utexas.edu>
+Date:   Fri Mar 27 20:49:19 2015 -0500
+
+    Create README.md
+
+commit b629a5e52d38569cf00ffbab9afdc5c4a563082a
+Author: root <root@bananafish>
+Date:   Fri Mar 27 02:57:49 2015 +0000
+
+    sdlfjhsd
+
+commit 42008129b4091bcadc88c8360556d115cca9ee77
+Author: root <root@bananafish>
+Date:   Fri Mar 27 02:46:12 2015 +0000
+
+    html
+
+commit e305032108307fbf6d41659744292a743db94ef2
+Author: Steven Zvonek <skz94@cs.utexas.edu>
+Date:   Thu Mar 26 21:35:09 2015 -0500
+
+    Create models.py
+
+commit 281361bec54bad489991c2171373b28f78c3ae38
+Author: DrAlexMV <alexandermventura@utexas.edu>
+Date:   Thu Mar 26 19:12:44 2015 -0500
+
+    fixing model problems
+
+commit 3ccbdbc6131724e1899f4ea01761863ae98419c1
+Author: Steven Zvonek <skz94@cs.utexas.edu>
+Date:   Thu Mar 26 18:20:30 2015 -0500
+
+    Delete Game.pyc
+
+commit b2da0427c17858287cadf37787d5caed5eb8a4d8
+Author: Steven Zvonek <skz94@cs.utexas.edu>
+Date:   Thu Mar 26 18:20:18 2015 -0500
+
+    Delete models.pyc
+
+commit 46178197f8f6a60d9845e1ae8f4744cc90342ef5
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Mar 26 18:00:15 2015 -0500
+
+    added git log
+
 commit 4e8bcf2041a5eaec8bb985a5b55b8d47899683ae
 Author: Steven Zvonek <stevenzvonek1992@gmail.com>
 Date:   Thu Mar 26 17:56:16 2015 -0500
