@@ -15,7 +15,6 @@ class Game(db.Model):
     original_release_date = db.Column(db.DateTime)
     deck = db.Column(db.Text)
     description = db.Column(db.Text)
-
     company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
 
     #Create a new game object using all the parameter atributes

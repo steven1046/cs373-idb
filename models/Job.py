@@ -8,14 +8,13 @@ from models import Company
 class Job(db.Model):
     __tablename__ = 'jobs'
 
-    job_id = db.Column(db.Integer, primary_key=True)
+    job_id = db.Column(db.String(80), primary_key=True)
     job_title = db.Column(db.String(80))
     url = db.Column(db.String(80))
     description = db.Column(db.Text)
     location = db.Column(db.String(80))
     company_name = db.Column(db.String(80))
-    company_id = db.Column(db.Integer)
-    # company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
+    company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
 
     #Create a new job object
     def __init__(self, job_id, job_title, url, description, location, company_name, company_id):
@@ -37,6 +36,7 @@ class Job(db.Model):
         for column in self.__table__.columns:
             d[column.name] = str(getattr(self, column.name))
         return d
+
 
 #Create a new job using the json sent in
 def create_job(job):
