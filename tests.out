@@ -20,6 +20,6 @@ test_platform_model_creation_2 (__main__.TestModels) ... ok
 test_platform_model_creation_3 (__main__.TestModels) ... ok
 
 ----------------------------------------------------------------------
-Ran 20 tests in 0.121s
+Ran 20 tests in 0.127s
 
 OK
