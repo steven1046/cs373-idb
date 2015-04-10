@@ -3,9 +3,6 @@
 # from utils.json_utils import to_json
 # from models import Company
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
-
-
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
@@ -21,6 +18,9 @@ def to_json(f):
     return handle_object
 
 
+db=0
+to_json=0
+Company=0
 
 
 class Game(db.Model):
@@ -298,20 +298,20 @@ class Platform(db.Model):
         return Platform.query.with_entities(Platform.platform_id, Platform.platform).all()
 
 
-#added 04/09/15
+
+
 class Job(db.Model):
     __tablename__ = 'jobs'
 
-    job_id = db.Column(db.Integer, primary_key = True)
+    job_id = db.Column(db.String(80), primary_key=True)
     job_title = db.Column(db.String(80))
     url = db.Column(db.String(80))
     description = db.Column(db.Text)
     location = db.Column(db.String(80))
-    company_name = db.Column(String(80))
-
+    company_name = db.Column(db.String(80))
     company_id = db.Column(db.Integer, db.ForeignKey("companies.company_id"))
 
-    #Create a new job object 
+    #Create a new job object
     def __init__(self, job_id, job_title, url, description, location, company_name, company_id):
         self.job_id = job_id
         self.job_title = job_title
@@ -332,10 +332,16 @@ class Job(db.Model):
             d[column.name] = str(getattr(self, column.name))
         return d
 
+
     #Create a new job using the json sent in
     def create_job(job):
+        inspector = inspect(db.engine)
+
+        for table_name in inspector.get_table_names():
+            print(table_name)
+        print("here")
         new_job = Job(job["job_id"], job["job_title"], job["url"], job["description"], job["location"], job["company_name"], job["company_id"])
-        db.session.add(new_game)
+        db.session.add(new_job)
         db.session.commit()
 
     #Returns a list of all the jobs in a json
@@ -343,7 +349,10 @@ class Job(db.Model):
     def find_all():
         return Job.query.all()
 
-    #Returns a json of the job model mathcing the job id passed in
+    #Returns a json of the job model matching the job id passed in
     @to_json
     def find_by_id(job_id):
         return Job.query.filter_by(job_id=job_id).first()
+
+
+
