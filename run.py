@@ -3,7 +3,7 @@ __author__ = 'alexanderventura'
 from configuration.app import app
 from configuration.config import config
 from configuration.database import db
-from api import game, company, genre, platform, test, job
+from api import job, game, company, genre, platform, test
 from models import Game, Company, Game_Genre, Game_Platform, Job, Genre, Platform
 
 app.register_blueprint(job.jobs, url_prefix=config["ROUTE_PREFIX"] + "jobs")
