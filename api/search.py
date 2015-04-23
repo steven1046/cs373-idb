@@ -14,7 +14,7 @@ searches = Blueprint("searches", __name__)
 
 @searches.route("/", methods=["GET"])
 def search():
-    a = {}
+    a = {"results": []}
     try:
         if "s" in request.args:
             if request.args["s"] != "":
