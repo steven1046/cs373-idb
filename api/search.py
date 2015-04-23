@@ -35,6 +35,9 @@ def search():
 def execute_search(search_string):
     # whole match queries
 
+    #Todo: Need to change to OrderedDicts ???
+    a = {"results": []}
+
     print("WHOLE MATCH")
 
     game_queries = OrderedDict([("name", Game.name.ilike("%" + request.args["s"] + "%")),
@@ -52,18 +55,17 @@ def execute_search(search_string):
 
     print("SEARCHING GAMES")
 
-    games = search_models(request.args["s"], Game, "games", "whole match", "AND", game_queries, Game.name, Game.game_id)
+    games = search_models(a, request.args["s"], Game, "games", "whole match", "AND", game_queries, Game.name, Game.game_id)
 
     print("SEARCHING COMPANIES")
 
-    companies = search_models(request.args["s"], Company, "companies", "whole match", "AND", company_queries, Company.name,
+    companies = search_models(a, request.args["s"], Company, "companies", "whole match", "AND", company_queries, Company.name,
                               Company.company_id)
 
     print("SEARCHING JOBS")
 
-    jobs = search_models(request.args["s"], Job, "jobs", "whole match", "AND", job_queries, Job.job_title, Job.job_id)
+    jobs = search_models(a, request.args["s"], Job, "jobs", "whole match", "AND", job_queries, Job.job_title, Job.job_id)
 
-    a = {}
     a["results"] = games["results"] + companies["results"] + jobs["results"]
 
     # contains AND
@@ -96,13 +98,13 @@ def execute_search(search_string):
                                         ("location", and_(* [Job.location.ilike("%" + x + "%") for x in terms])),
                                         ("company_name", and_(* [Job.company_name.ilike("%" + x + "%") for x in terms]))])
 
-        games_and = search_models(request.args["s"], Game, "games", "partial match AND", "AND", games_queries_and, Game.name,
+        games_and = search_models(a, request.args["s"], Game, "games", "partial match AND", "AND", games_queries_and, Game.name,
                                   Game.game_id)
 
-        companies_and = search_models(request.args["s"], Company, "companies", "partial match AND", "AND",
+        companies_and = search_models(a, request.args["s"], Company, "companies", "partial match AND", "AND",
                                       companies_queries_and, Company.name, Company.company_id)
 
-        jobs_and = search_models(request.args["s"], Job, "jobs", "partial match AND", "AND", jobs_queries_and, Job.job_title,
+        jobs_and = search_models(a, request.args["s"], Job, "jobs", "partial match AND", "AND", jobs_queries_and, Job.job_title,
                                  Job.job_id)
 
         a["results"] += games_and["results"] + companies_and["results"] + jobs_and["results"]
@@ -124,13 +126,13 @@ def execute_search(search_string):
                                        ("location", or_(* [Job.location.ilike("%" + x + "%") for x in terms])),
                                        ("company_name", or_(* [Job.company_name.ilike("%" + x + "%") for x in terms]))])
 
-        games_or = search_models(request.args["s"], Game, "games", "partial match OR", "OR", games_queries_or, Game.name,
+        games_or = search_models(a, request.args["s"], Game, "games", "partial match OR", "OR", games_queries_or, Game.name,
                                  Game.game_id)
 
-        companies_or = search_models(request.args["s"], Company, "companies", "partial match OR", "OR", companies_queries_or,
+        companies_or = search_models(a, request.args["s"], Company, "companies", "partial match OR", "OR", companies_queries_or,
                                      Company.name, Company.company_id)
 
-        jobs_or = search_models(request.args["s"], Job, "jobs", "partial match OR", "OR",
+        jobs_or = search_models(a, request.args["s"], Job, "jobs", "partial match OR", "OR",
                                 jobs_queries_or, Job.job_title, Job.job_id)
 
         a["results"] += games_or["results"] + companies_or["results"] + jobs_or["results"]
@@ -139,7 +141,7 @@ def execute_search(search_string):
 
 
 # search_string, filter, entities
-def search_models(search_string, model, type, match_type, result_type, queries, *entities):
+def search_models(temp_result, search_string, model, type, match_type, result_type, queries, *entities):
 
 
     result = {}
@@ -154,25 +156,37 @@ def search_models(search_string, model, type, match_type, result_type, queries, 
         # item[0] is the data that contains the search terms. Pass to context function to get a context
 
         for item in r:
-            if match_type == "whole match":
-                context, num_matches = create_context(item[0], search_string, "whole match")
-            else:
-                context, num_matches = create_context(item[0], terms, "other")
-            # Todo: Change to case
-            if match_type == "whole match":
-                if num_matches > 0:
-                    d = {"name": item[1], "id": item[2], "context": context, "type": type, "result_type": result_type}
-                    result["results"].append(d)
-            else:
-                if match_type == "partial match AND":
-                    if num_matches == len(terms):
-                        d = {"name": item[1], "id": item[2], "context": context, "type": type, "result_type": result_type}
+            contains = False
+
+            for obj in temp_result["results"]:
+                if obj["id"] == item[2] and obj["type"] == type:
+                    contains = True
+                # print(str(obj["id"]) + " | " + obj["type"])
+                # print(obj["id"] == item[2] and obj["type"] == type)
+                # print(str(obj["id"]) + ", " + str(item[2]) + " | " + obj["type"] + ", " + type)
+
+            if not contains:
+                if match_type == "whole match":
+                    context, num_matches = create_context(item[0], search_string, "whole match")
+                else:
+                    context, num_matches = create_context(item[0], terms, "other")
+                print("HERE")
+                # Todo: Change to case
+                if match_type == "whole match":
+                    if num_matches > 0:
+                        d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type, "result_type": result_type}
                         result["results"].append(d)
                 else:
-                    if num_matches > 0:
-                        d = {"name": item[1], "id": item[2], "context": context, "type": type, "result_type": result_type}
-                        result["results"].append(d)
+                    if match_type == "partial match AND":
+                        if num_matches == len(terms):
+                            d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type, "result_type": result_type}
+                            result["results"].append(d)
+                    else:
+                        if num_matches > 0:
+                            d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type, "result_type": result_type}
+                            result["results"].append(d)
 
+    print("returning")
     return result
 
 
@@ -191,7 +205,7 @@ def create_context(text, terms, match_type):
     num_matches = 0
 
     if match_type == "whole match":
-        match = re.search(".{0,10} " + terms + " .{0,10}", text, re.IGNORECASE)
+        match = re.search(".{0,10}" + terms + ".{0,10}", text, re.IGNORECASE)
         if match is not None:
                 print("match: " + match.group(0))
                 context += "..." + match.group(0)
@@ -203,7 +217,7 @@ def create_context(text, terms, match_type):
 
     else:
         for term in terms:
-            match = re.search(".{0,10} " + term + " .{0,10}", text, re.IGNORECASE)
+            match = re.search(".{0,10}" + term + ".{0,10}", text, re.IGNORECASE)
             if match is not None:
                 print("match: " + match.group(0))
                 context += "..." + match.group(0)
