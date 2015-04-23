@@ -152,20 +152,29 @@ def search_models(search_string, model, type, match_type, queries, *entities):
         # item[0] is the data that contains the search terms. Pass to context function to get a context
 
         for item in r:
-            context, num_matches = create_context(item[0], terms)
-            if match_type == "partial match AND":
-                if num_matches == len(terms):
-                    d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type}
-                    result["results"].append(d)
+            if match_type == "whole match":
+                context, num_matches = create_context(item[0], search_string, "whole match")
             else:
+                context, num_matches = create_context(item[0], terms, "other")
+            # Todo: Change to case
+            if match_type == "whole match":
                 if num_matches > 0:
                     d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type}
                     result["results"].append(d)
+            else:
+                if match_type == "partial match AND":
+                    if num_matches == len(terms):
+                        d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type}
+                        result["results"].append(d)
+                else:
+                    if num_matches > 0:
+                        d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type}
+                        result["results"].append(d)
 
     return result
 
 
-def create_context(text, terms):
+def create_context(text, terms, match_type):
     print("inside create_context")
     print(terms)
 
@@ -179,27 +188,25 @@ def create_context(text, terms):
 
     num_matches = 0
 
-    for term in terms:
-        index = text.find(term)
-        start = 0
-        end = 0
-
-
-        if index - context_before < 0:
-            start = 0
-        else:
-            start = index - context_before
-
-        if index + context_after > len(text) - 1:
-            end = len(text) - 1
-        else:
-            end = index + context_after
-
-        match = re.search(".{0,10} " + term + " .{0,10}", text, re.IGNORECASE)
+    if match_type == "whole match":
+        match = re.search(".{0,10} " + terms + " .{0,10}", text, re.IGNORECASE)
         if match is not None:
-            print("match: " + match.group(0))
-            context += "..." + match.group(0)
-            num_matches += 1
+                print("match: " + match.group(0))
+                context += "..." + match.group(0)
+                num_matches += 1
+        else:
+            if terms == text:
+                context += "..." + terms
+                num_matches += 1
+
+
+    else:
+        for term in terms:
+            match = re.search(".{0,10} " + term + " .{0,10}", text, re.IGNORECASE)
+            if match is not None:
+                print("match: " + match.group(0))
+                context += "..." + match.group(0)
+                num_matches += 1
 
     context += "..."
     return context, num_matches
