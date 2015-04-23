@@ -159,16 +159,16 @@ def search_models(search_string, model, type, match_type, queries, *entities):
             # Todo: Change to case
             if match_type == "whole match":
                 if num_matches > 0:
-                    d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type}
+                    d = {"name": item[1], "id": item[2], "context": context, "type": type}
                     result["results"].append(d)
             else:
                 if match_type == "partial match AND":
                     if num_matches == len(terms):
-                        d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type}
+                        d = {"name": item[1], "id": item[2], "context": context, "type": type}
                         result["results"].append(d)
                 else:
                     if num_matches > 0:
-                        d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type}
+                        d = {"name": item[1], "id": item[2], "context": context, "type": type}
                         result["results"].append(d)
 
     return result
