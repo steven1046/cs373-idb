@@ -14,15 +14,17 @@ searches = Blueprint("searches", __name__)
 
 @searches.route("/", methods=["GET"])
 def search():
+    a = {}
     try:
         if "s" in request.args:
-            search = request.args["s"].rsplit(" ")
-            for x in search:
-                print(x)
-            print(request.args["s"])
-            a = execute_search(request.args["s"])
+            if request.args["s"] != "":
+                search = request.args["s"].rsplit(" ")
+                for x in search:
+                    print(x)
+                print(request.args["s"])
+                a = execute_search(request.args["s"])
 
-            print(len(a["results"]))
+                print(len(a["results"]))
 
         return jsonify(a), 200
 
@@ -198,7 +200,6 @@ def create_context(text, terms, match_type):
             if terms == text:
                 context += "..." + terms
                 num_matches += 1
-
 
     else:
         for term in terms:
