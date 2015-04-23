@@ -174,16 +174,17 @@ def search_models(temp_result, search_string, model, type, match_type, result_ty
                 # Todo: Change to case
                 if match_type == "whole match":
                     if num_matches > 0:
-                        d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type, "result_type": result_type}
+                        # "context": match_type + " : " + q + " : " + context
+                        d = {"name": item[1], "id": item[2], "context": context, "type": type, "result_type": result_type}
                         result["results"].append(d)
                 else:
                     if match_type == "partial match AND":
                         if num_matches == len(terms):
-                            d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type, "result_type": result_type}
+                            d = {"name": item[1], "id": item[2], "context": context, "type": type, "result_type": result_type}
                             result["results"].append(d)
                     else:
                         if num_matches > 0:
-                            d = {"name": item[1], "id": item[2], "context": match_type + " : " + q + " : " + context, "type": type, "result_type": result_type}
+                            d = {"name": item[1], "id": item[2], "context": context, "type": type, "result_type": result_type}
                             result["results"].append(d)
 
     print("returning")
@@ -201,11 +202,14 @@ def create_context(text, terms, match_type):
     # remove html tags
     text = re.sub("<.*?>", " ", text)
 
+    # used for matching when term appears at beginning or end
+    text = " " + text + " "
+
 
     num_matches = 0
 
     if match_type == "whole match":
-        match = re.search(".{0,10}" + terms + ".{0,10}", text, re.IGNORECASE)
+        match = re.search(".{0,10} " + terms + " .{0,10}", text, re.IGNORECASE)
         if match is not None:
                 print("match: " + match.group(0))
                 context += "..." + match.group(0)
@@ -217,7 +221,7 @@ def create_context(text, terms, match_type):
 
     else:
         for term in terms:
-            match = re.search(".{0,10}" + term + ".{0,10}", text, re.IGNORECASE)
+            match = re.search(".{0,10} " + term + " .{0,10}", text, re.IGNORECASE)
             if match is not None:
                 print("match: " + match.group(0))
                 context += "..." + match.group(0)
