@@ -1,3 +1,132 @@
+commit 9af5cb58e3028c65b95213be7b97fc384fd6729f
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 23 18:57:43 2015 -0500
+
+    fix no results case
+
+commit b3422a379687733309f69749e8ab73397577276f
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 23 13:51:54 2015 -0500
+
+    fixing/improving search
+
+commit e0a0a9859afd1f21ee9dcb283c3948f5ef4f06f9
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 23 13:39:02 2015 -0500
+
+    Fixing bugs and improving search
+
+commit 5fafb108cbdaf716afd3b8625c16725e19cf5620
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 23 12:42:26 2015 -0500
+
+    Added result_type to each object in search json response
+
+commit 8eaef8a3a7b990ff8e99d1da40bdc42851633ed3
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 23 10:28:34 2015 -0500
+
+    Fixed bug with no search terms/missing s parameter
+
+commit f8ec31712d34ce0ffaa24182ae0f5a7b7b1e940a
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Wed Apr 22 21:52:08 2015 -0500
+
+    Testing, fixing bugs.
+
+commit 98296b65695abf0bc3a42106edfc9449c2b836dd
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Wed Apr 22 21:49:11 2015 -0500
+
+    Fixing search bugs.
+
+commit 96165c95e7fbcb42d317379e4c99bc9e588f4045
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Wed Apr 22 21:29:40 2015 -0500
+
+    Finished search? Need to test more. Creating the context could probably be improved.
+
+commit 45094259f4e99c6ed2aff152f92b39f735a0f3f7
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Mon Apr 20 21:17:20 2015 -0500
+
+    working on search
+
+commit 73540b432ba87c18924cdd55140a45f033f794bc
+Author: LHBDev <freeraprb@gmail.com>
+Date:   Thu Apr 16 15:10:03 2015 -0500
+
+    api elementalists
+
+commit fe38309b47776e22d1ed5d3d9f2e251e2a7d0627
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Mon Apr 13 17:46:07 2015 -0500
+
+    Job api working
+
+commit 15ff45657be0ffbf2516a6438e9de8885febb808
+Merge: 229fcd8 96e4c63
+Author: root <root@bananafish>
+Date:   Fri Apr 10 02:31:43 2015 +0000
+
+    Pydocs
+
+commit 96e4c637ad7d680aa1c316b94b937c7db3247465
+Author: Steven Zvonek <stevenzvonek1992@gmail.com>
+Date:   Thu Apr 9 21:30:49 2015 -0500
+
+    changed models.py
+
+commit 229fcd8f8cca14649587e752cf115807a91cb8bb
+Merge: 2cbb17b 04e0517
+Author: root <root@bananafish>
+Date:   Fri Apr 10 02:30:46 2015 +0000
+
+    Pydoc
+
+commit 2cbb17b204aac65f6ba11aedc7607766f49c4833
+Author: root <root@bananafish>
+Date:   Fri Apr 10 02:29:39 2015 +0000
+
+    pydoc
+
+commit 04e0517b7b6c66be18a6fa0222ae915cf689e4a7
+Author: nico <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 21:24:10 2015 -0500
+
+    adding images
+
+commit ee340171945bcf4dbdb0b0606f1fd25ca239b7b1
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 20:33:44 2015 -0500
+
+    debugging
+
+commit 93944543d5a42cb77584c9812e8b896f6d28b05d
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 19:39:10 2015 -0500
+
+    updated sql script
+
+commit d301391a49d55de5a8a016acfd71a01496dd832a
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 18:23:40 2015 -0500
+
+    debugging
+
+commit 03c1a2f59bdfd885de455574eea00774296c5941
+Merge: d09f27e 39f51d7
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 18:20:59 2015 -0500
+
+    debugging
+
+commit d09f27e3a289a020fdc1f339d1cdb5e1ff05ad2f
+Author: Nicolas Vasquez <nicoavasquez@yahoo.com>
+Date:   Thu Apr 9 18:13:34 2015 -0500
+
+    debugging
+
 commit 39f51d7e7f76e9a4af97e34cf8738d43e08ba5ad
 Merge: afbbb39 7f61836
 Author: root <root@bananafish>
