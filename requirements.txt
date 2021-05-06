@@ -1,7 +1,7 @@
 Flask==0.10.1
 Flask-API==0.6.2
 Flask-Bcrypt==0.6.0
-Flask-Cors==1.10.2
+Flask-Cors==3.0.9
 Flask-Login==0.2.11
 Flask-OAuthlib==0.8.0
 Flask-SQLAlchemy==2.0
